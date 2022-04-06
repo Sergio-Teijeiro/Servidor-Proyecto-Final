@@ -3,9 +3,12 @@ package Vista;
 import java.awt.EventQueue;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
+
+import Controlador.Pool;
 
 public class Servidor extends JFrame {
 	
@@ -37,8 +40,14 @@ public class Servidor extends JFrame {
 	 * Create the frame.
 	 */
 	public Servidor() {
-		setBounds(100, 100, 450, 300);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		try {
+			Pool.IniciaPool();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//setBounds(100, 100, 450, 300);
 		
         lblEstadoPuerto = new javax.swing.JLabel();
         lblPuerto = new javax.swing.JLabel();
