@@ -140,7 +140,7 @@ public class Servidor extends JFrame {
 
                     try {
                         skServidor = new ServerSocket(puerto);
-                        //new HiloServidor(skServidor, listaSockets).start();
+                        new HiloServidor(skServidor, listaSockets).start();
 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -155,7 +155,7 @@ public class Servidor extends JFrame {
                 try {
                     skServidor = new ServerSocket(puerto);
 
-                    //new HiloServidor(skServidor, listaSockets).start();
+                    new HiloServidor(skServidor, listaSockets).start();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
