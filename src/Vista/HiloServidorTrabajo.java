@@ -12,6 +12,10 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import Controlador.gestionConsultas;
+import Modelo.Coleccion;
+import Modelo.Numero;
+
 public class HiloServidorTrabajo extends Thread {
     Socket socketCliente;
     ArrayList<Socket> listaSockets;
@@ -46,7 +50,14 @@ public class HiloServidorTrabajo extends Thread {
                     case "modificar":
                         break; 
                     case "consultar":
-                        break;                      
+                        break;         
+                    case "colByComic": Numero numero = (Numero) objeto_entrada.readObject();
+                    
+            							Coleccion coleccion = gestionConsultas.getColeccionPorNumero(numero);
+            							
+            							objeto_salida.writeObject(coleccion);
+            		
+            			break;    
                     default:
                         break;
                 }
@@ -57,6 +68,9 @@ public class HiloServidorTrabajo extends Thread {
 
         } catch (IOException ex) {
             //Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }    
 }
