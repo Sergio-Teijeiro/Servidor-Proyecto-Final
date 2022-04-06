@@ -56,6 +56,7 @@ public class HiloServidorTrabajo extends Thread {
             							Coleccion coleccion = gestionConsultas.getColeccionPorNumero(numero);
             							
             							objeto_salida.writeObject(coleccion);
+
             		
             			break;  
                     case "cargarComics": ArrayList<Numero> numeros = gestionConsultas.cargarComics();

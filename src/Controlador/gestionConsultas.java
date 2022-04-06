@@ -36,7 +36,7 @@ public class gestionConsultas {
 					Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
 				}
 				
-				coleccion = new Coleccion(rs.getInt(1),rs.getString(1),img);
+				coleccion = new Coleccion(rs.getInt(1),rs.getString(2),data);
 			}
 			
 			rs.close();
@@ -69,7 +69,7 @@ public class gestionConsultas {
 					Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
 				}
 				
-				Numero n = new Numero(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getString(4),rs.getString(5),rs.getString(6),img,rs.getInt(8));
+				Numero n = new Numero(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getString(4),rs.getString(5),rs.getString(6),data,rs.getInt(8));
 				
 				comics.add(n);
 			}
