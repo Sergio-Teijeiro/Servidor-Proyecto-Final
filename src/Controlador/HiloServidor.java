@@ -1,4 +1,4 @@
-package Vista;
+package Controlador;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -9,7 +9,7 @@ public class HiloServidor extends Thread {
     ServerSocket socketServidor;
     ArrayList<Socket> listaSockets;
 
-    HiloServidor(ServerSocket skServidor, ArrayList<Socket> listaSockets) {
+    public HiloServidor(ServerSocket skServidor, ArrayList<Socket> listaSockets) {
         this.socketServidor = skServidor;
         this.listaSockets = listaSockets;
     }

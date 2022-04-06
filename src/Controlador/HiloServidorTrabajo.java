@@ -1,4 +1,4 @@
-package Vista;
+package Controlador;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import Controlador.gestionConsultas;
 import Modelo.Coleccion;
 import Modelo.Numero;
 

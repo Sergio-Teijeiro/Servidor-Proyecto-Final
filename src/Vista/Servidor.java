@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import Controlador.HiloServidor;
 import Controlador.Pool;
 import javax.swing.JButton;
 import javax.swing.GroupLayout.Alignment;
