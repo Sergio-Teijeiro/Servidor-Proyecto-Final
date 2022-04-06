@@ -56,7 +56,7 @@ public class HiloServidorTrabajo extends Thread {
             socketCliente.close();
 
         } catch (IOException ex) {
-            Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }    
 }
