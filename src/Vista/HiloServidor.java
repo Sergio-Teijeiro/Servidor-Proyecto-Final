@@ -26,7 +26,7 @@ public class HiloServidor extends Thread {
                 listaSockets.add(skCliente);
                 
                 //Atendemos al cliente mediante un thread
-                //new HiloServidorTrabajo(skCliente,listaSockets).start();
+                new HiloServidorTrabajo(skCliente,listaSockets).start();
 
             } catch (IOException ex) {
                 //Logger.getLogger(HiloServidor.class.getName()).log(Level.SEVERE, null, ex);
