@@ -57,7 +57,11 @@ public class HiloServidorTrabajo extends Thread {
             							
             							objeto_salida.writeObject(coleccion);
             		
-            			break;    
+            			break;  
+                    case "cargarComics": ArrayList<Numero> numeros = gestionConsultas.cargarComics();
+                    
+                    		objeto_salida.writeObject(numeros);
+                    	break;
                     default:
                         break;
                 }
