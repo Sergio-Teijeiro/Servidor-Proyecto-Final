@@ -2,10 +2,13 @@ package Vista;
 
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -165,7 +168,26 @@ public class Servidor extends JFrame {
 	}
 	
 	private void btnDetenerActionPerformed(java.awt.event.ActionEvent evt) {
-		
+        if (skServidor == null) {
+            JOptionPane.showMessageDialog(rootPane, "El servidor no se ha iniciado", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (skServidor.isClosed()) {
+            JOptionPane.showMessageDialog(rootPane, "El servidor ya está cerrado", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            try {
+                
+                //se cierra el servidor y todos sus clientes
+                skServidor.close();
+
+                for (Socket s : listaSockets) {
+                    s.close();
+                }
+
+                lblEstadoPuerto.setText("APAGADO");
+                lblEstadoPuerto.setForeground(new java.awt.Color(255, 0, 0));
+            } catch (IOException ex) {
+                Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } 		
 	}
 
 }
