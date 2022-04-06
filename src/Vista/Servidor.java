@@ -1,5 +1,6 @@
 package Vista;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -7,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import Controlador.Pool;
 
@@ -122,7 +124,44 @@ public class Servidor extends JFrame {
 	}
 	
 	private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {
-		
+        //Inicia la escucha en el puerto indicado
+
+        if (txtPuerto.getText().isBlank()) {
+            JOptionPane.showMessageDialog(rootPane, "Debes indicar un puerto", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            if (skServidor != null) {
+                if (!skServidor.isClosed()) {
+                    JOptionPane.showMessageDialog(rootPane, "El servidor ya está iniciado", "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    lblEstadoPuerto.setText("ENCENDIDO");
+                    lblEstadoPuerto.setForeground(Color.GREEN);
+
+                    int puerto = Integer.valueOf(txtPuerto.getText().trim());
+
+                    try {
+                        skServidor = new ServerSocket(puerto);
+                        //new HiloServidor(skServidor, listaSockets).start();
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            } else {
+                lblEstadoPuerto.setText("ENCENDIDO");
+                lblEstadoPuerto.setForeground(Color.GREEN);
+
+                int puerto = Integer.valueOf(txtPuerto.getText().trim());
+
+                try {
+                    skServidor = new ServerSocket(puerto);
+
+                    //new HiloServidor(skServidor, listaSockets).start();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }		
 	}
 	
 	private void btnDetenerActionPerformed(java.awt.event.ActionEvent evt) {
