@@ -39,7 +39,7 @@ public class HiloServidorTrabajo extends Thread {
                 peticion = flujo_entrada.readUTF();
                 
                 switch (peticion) {
-                    case "alta": 
+                    case "alta": flujo_salida.writeUTF("El mensaje se recibió correctamente. Esta es la respuesta.");
                         break;
                     case "baja":
                         break; 
