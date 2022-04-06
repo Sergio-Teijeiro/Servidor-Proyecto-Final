@@ -2,10 +2,12 @@ package Vista;
 
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,6 +16,12 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import Controlador.Pool;
+import javax.swing.JButton;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.ImageIcon;
+import javax.imageio.ImageIO;
+import javax.swing.GroupLayout;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class Servidor extends JFrame {
 	
@@ -122,6 +130,7 @@ public class Servidor extends JFrame {
                 .addContainerGap(135, Short.MAX_VALUE))
         );
 
+
         pack();
         setLocationRelativeTo(null);
 	}
@@ -164,7 +173,36 @@ public class Servidor extends JFrame {
                 }
             }
 
-        }		
+        }
+		
+		/*try {
+			Statement st = Pool.getConexion().createStatement();
+			ResultSet rs = st.executeQuery("SELECT * FROM numeros WHERE id = 13");
+			
+			while (rs.next()) {
+				Blob blob = rs.getBlob("img");
+				byte[] data = blob.getBytes(1, (int)blob.length());
+				BufferedImage img = null;
+				try {
+					img = ImageIO.read(new ByteArrayInputStream(data));
+				} catch (IOException ex) {
+					Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
+				}
+				
+				ImageIcon iconoEscala = new ImageIcon(img.getScaledInstance(btnPrueba.getWidth(),
+						btnPrueba.getHeight(), java.awt.Image.SCALE_FAST));
+				btnPrueba.setIcon(iconoEscala);
+			}
+			
+			st.close();
+			rs.close();
+			
+			Pool.Cerrar();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+		
 	}
 	
 	private void btnDetenerActionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,5 +227,4 @@ public class Servidor extends JFrame {
             }
         } 		
 	}
-
 }
