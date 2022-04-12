@@ -176,34 +176,6 @@ public class Servidor extends JFrame {
 
         }
 		
-		/*try {
-			Statement st = Pool.getConexion().createStatement();
-			ResultSet rs = st.executeQuery("SELECT * FROM numeros WHERE id = 13");
-			
-			while (rs.next()) {
-				Blob blob = rs.getBlob("img");
-				byte[] data = blob.getBytes(1, (int)blob.length());
-				BufferedImage img = null;
-				try {
-					img = ImageIO.read(new ByteArrayInputStream(data));
-				} catch (IOException ex) {
-					Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
-				}
-				
-				ImageIcon iconoEscala = new ImageIcon(img.getScaledInstance(btnPrueba.getWidth(),
-						btnPrueba.getHeight(), java.awt.Image.SCALE_FAST));
-				btnPrueba.setIcon(iconoEscala);
-			}
-			
-			st.close();
-			rs.close();
-			
-			Pool.Cerrar();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-		
 	}
 	
 	private void btnDetenerActionPerformed(java.awt.event.ActionEvent evt) {
