@@ -74,6 +74,10 @@ public class HiloServidorTrabajo extends Thread {
             
             				objeto_salida.writeObject(numerosTitulo);
             			break;	
+                    case "cargarColecciones": ArrayList<Coleccion> colecciones = gestionConsultas.cargarColecciones();
+                    
+                    		objeto_salida.writeObject(colecciones);
+                    	break;
                     default:
                         break;
                 }

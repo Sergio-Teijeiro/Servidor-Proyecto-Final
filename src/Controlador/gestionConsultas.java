@@ -159,4 +159,9 @@ public class gestionConsultas {
 		return comics;
 	}
 
+	public static ArrayList<Coleccion> cargarColecciones() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
