@@ -10,8 +10,7 @@ import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
 
-import Modelo.Coleccion;
-import Modelo.Numero;
+import Modelo.*;
 
 public class gestionConsultas {
 
@@ -160,8 +159,39 @@ public class gestionConsultas {
 	}
 
 	public static ArrayList<Coleccion> cargarColecciones() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Coleccion> colecciones = new ArrayList<>();
+		String consulta = "SELECT * FROM comics.colecciones\n"
+				+ "ORDER BY nombre;";
+		
+		try {
+			Statement st = Pool.getConexion().createStatement();
+			ResultSet rs = st.executeQuery(consulta);
+			
+			while (rs.next()) {
+				Blob blob = rs.getBlob("img");
+				byte[] data = blob.getBytes(1, (int)blob.length());
+				BufferedImage img = null;
+				try {
+					img = ImageIO.read(new ByteArrayInputStream(data));
+				} catch (IOException ex) {
+					Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
+				}
+				
+				Coleccion c = new Coleccion(rs.getInt(1),rs.getString(2),data);
+				
+				colecciones.add(c);
+			}
+			
+			rs.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  finally {
+			Pool.Cerrar();
+		}
+		
+		return colecciones;
 	}
 
 }
