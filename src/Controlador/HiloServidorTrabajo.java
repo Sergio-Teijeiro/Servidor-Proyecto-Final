@@ -28,6 +28,7 @@ public class HiloServidorTrabajo extends Thread {
     public void run() {
         try {
             String peticion = "";
+            Numero numero, numAux;
 
             //Realiza las peticiones mientras se envien
             while (!peticion.equalsIgnoreCase("Fin")) {
@@ -42,7 +43,8 @@ public class HiloServidorTrabajo extends Thread {
                 peticion = flujo_entrada.readUTF();
                 
                 switch (peticion) {
-                    case "alta": flujo_salida.writeUTF("El mensaje se recibió correctamente. Esta es la respuesta.");
+                    case "altaNumero": numero = (Numero) objeto_entrada.readObject();
+                    	flujo_salida.writeUTF("El mensaje se recibió correctamente. Esta es la respuesta.");
                         break;
                     case "baja":
                         break; 
@@ -50,11 +52,15 @@ public class HiloServidorTrabajo extends Thread {
                         break; 
                     case "consultar":
                         break;         
-                    case "colByComic": Numero numero = (Numero) objeto_entrada.readObject();
+                    case "colByComic": numero = (Numero) objeto_entrada.readObject();
+                    					numAux = gestionConsultas.existeTituloNumero(numero.getTitulo());
                     
-            							Coleccion coleccion = gestionConsultas.getColeccionPorNumero(numero);
-            							
-            							objeto_salida.writeObject(coleccion);
+                                        if (numAux != null) {
+                                            flujo_salida.writeUTF("Ya existe un número con ese título");
+                                         } else {
+                                        	 //gestionNumeros.insertarNumero(numero);
+                                             flujo_salida.writeUTF("Se ha insertado correctamente el número "+numero.getTitulo());
+                                         }
 
             		
             			break;  

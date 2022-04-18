@@ -194,4 +194,9 @@ public class gestionConsultas {
 		return colecciones;
 	}
 
+	public static Numero existeTituloNumero(String titulo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
