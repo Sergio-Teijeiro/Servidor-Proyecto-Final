@@ -27,12 +27,17 @@ public class gestionConsultas {
 			
 			if (rs.next()) {
 				Blob blob = rs.getBlob("img");
-				byte[] data = blob.getBytes(1, (int)blob.length());
-				BufferedImage img = null;
-				try {
-					img = ImageIO.read(new ByteArrayInputStream(data));
-				} catch (IOException ex) {
-					Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
+				byte[] data = null;
+				
+				if (blob != null) {
+					data = blob.getBytes(1, (int)blob.length());
+					
+					BufferedImage img = null;
+					try {
+						img = ImageIO.read(new ByteArrayInputStream(data));
+					} catch (IOException ex) {
+						Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
+					}
 				}
 				
 				coleccion = new Coleccion(rs.getInt(1),rs.getString(2),data);
@@ -102,12 +107,17 @@ public class gestionConsultas {
 			
 			while (rs.next()) {
 				Blob blob = rs.getBlob("img");
-				byte[] data = blob.getBytes(1, (int)blob.length());
-				BufferedImage img = null;
-				try {
-					img = ImageIO.read(new ByteArrayInputStream(data));
-				} catch (IOException ex) {
-					Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
+				byte[] data = null;
+				
+				if (blob != null) {
+					data = blob.getBytes(1, (int)blob.length());
+					
+					BufferedImage img = null;
+					try {
+						img = ImageIO.read(new ByteArrayInputStream(data));
+					} catch (IOException ex) {
+						Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
+					}
 				}
 				
 				Numero n = new Numero(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getString(4),rs.getString(5),rs.getString(6),data,rs.getInt(8));
@@ -138,12 +148,17 @@ public class gestionConsultas {
 			
 			while (rs.next()) {
 				Blob blob = rs.getBlob("img");
-				byte[] data = blob.getBytes(1, (int)blob.length());
-				BufferedImage img = null;
-				try {
-					img = ImageIO.read(new ByteArrayInputStream(data));
-				} catch (IOException ex) {
-					Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
+				byte[] data = null;
+				
+				if (blob != null) {
+					data = blob.getBytes(1, (int)blob.length());
+					
+					BufferedImage img = null;
+					try {
+						img = ImageIO.read(new ByteArrayInputStream(data));
+					} catch (IOException ex) {
+						Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
+					}
 				}
 				
 				Numero n = new Numero(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getString(4),rs.getString(5),rs.getString(6),data,rs.getInt(8));
@@ -174,12 +189,17 @@ public class gestionConsultas {
 			
 			while (rs.next()) {
 				Blob blob = rs.getBlob("img");
-				byte[] data = blob.getBytes(1, (int)blob.length());
-				BufferedImage img = null;
-				try {
-					img = ImageIO.read(new ByteArrayInputStream(data));
-				} catch (IOException ex) {
-					Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
+				byte[] data = null;
+				
+				if (blob != null) {
+					data = blob.getBytes(1, (int)blob.length());
+					
+					BufferedImage img = null;
+					try {
+						img = ImageIO.read(new ByteArrayInputStream(data));
+					} catch (IOException ex) {
+						Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
+					}
 				}
 				
 				Coleccion c = new Coleccion(rs.getInt(1),rs.getString(2),data);
@@ -213,12 +233,59 @@ public class gestionConsultas {
 			
 			if (rs.next()) {
 				Blob blob = rs.getBlob("img");
-				byte[] data = blob.getBytes(1, (int)blob.length());
-				BufferedImage img = null;
-				try {
-					img = ImageIO.read(new ByteArrayInputStream(data));
-				} catch (IOException ex) {
-					Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
+				byte[] data = null;
+				
+				if (blob != null) {
+					data = blob.getBytes(1, (int)blob.length());
+					
+					BufferedImage img = null;
+					try {
+						img = ImageIO.read(new ByteArrayInputStream(data));
+					} catch (IOException ex) {
+						Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
+					}
+				}
+				
+				numero = new Numero(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getString(4),rs.getString(5),rs.getString(6),data,rs.getInt(8));
+			}
+			
+			rs.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  finally {
+			Pool.Cerrar();
+		}		
+		
+		return numero;
+	}
+
+	public static Numero existeIDNumero(int id) {
+		Numero numero = null;
+		String consulta = "SELECT * FROM comics.numeros\n"
+				+ "WHERE id = ?";
+		
+		try {
+			PreparedStatement ps = Pool.getConexion().prepareStatement(consulta);
+			
+			ps.setInt(1, id);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if (rs.next()) {
+				Blob blob = rs.getBlob("img");
+				byte[] data = null;
+				
+				if (blob != null) {
+					data = blob.getBytes(1, (int)blob.length());
+					
+					BufferedImage img = null;
+					try {
+						img = ImageIO.read(new ByteArrayInputStream(data));
+					} catch (IOException ex) {
+						Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
+					}
 				}
 				
 				numero = new Numero(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getString(4),rs.getString(5),rs.getString(6),data,rs.getInt(8));

@@ -59,7 +59,20 @@ public class HiloServidorTrabajo extends Thread {
                         break;
                     case "baja":
                         break; 
-                    case "modificar":
+                    case "modificarNumero": numero = (Numero) objeto_entrada.readObject();
+						numAux = gestionConsultas.existeIDNumero(numero.getId());
+                    
+						if (numAux == null) {
+							flujo_salida.writeUTF("No existe ningún número con ese ID");
+						} else {
+							//gestionNumeros.modificarNumero(numero);
+							flujo_salida.writeUTF("Se ha modificado correctamente el número "+numero.getTitulo());
+						
+							ArrayList<Numero> numeros = gestionConsultas.cargarComics();
+	                    
+							objeto_salida.writeObject(numeros);
+						}
+                    	
                         break; 
                     case "consultar":
                         break;         
