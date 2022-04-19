@@ -54,7 +54,7 @@ public class gestionNumeros {
 	}
 
 	public static void modificarNumero(Numero numero) {
-		String insercion = "UPDATE numeros SET titulo = ?, fecha_adquisicion = ?, tapa = ?, estado = ?,resenha = ?,img = ?,id_coleccion = ?);";
+		String insercion = "UPDATE numeros SET titulo = ?, fecha_adquisicion = ?, tapa = ?, estado = ?,resenha = ?,img = ?,id_coleccion = ? WHERE id = ?;";
 		InputStream input = null;
 		
 		if (numero.getImg() != null) {
@@ -80,6 +80,7 @@ public class gestionNumeros {
 			}
 			
 			ps.setInt(7, numero.getIdColeccion());
+			ps.setInt(8, numero.getId());
 			 
 			ps.executeUpdate();
 			
