@@ -49,7 +49,7 @@ public class HiloServidorTrabajo extends Thread {
 						if (numAux != null) {
 							flujo_salida.writeUTF("Ya existe un número con ese título");
 						} else {
-							//gestionNumeros.insertarNumero(numero);
+							gestionNumeros.insertarNumero(numero);
 							flujo_salida.writeUTF("Se ha insertado correctamente el número "+numero.getTitulo());
 						}
                         break;
