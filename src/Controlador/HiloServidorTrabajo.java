@@ -65,7 +65,7 @@ public class HiloServidorTrabajo extends Thread {
 						if (numAux == null) {
 							flujo_salida.writeUTF("No existe ningún número con ese ID");
 						} else {
-							//gestionNumeros.modificarNumero(numero);
+							gestionNumeros.modificarNumero(numero);
 							flujo_salida.writeUTF("Se ha modificado correctamente el número "+numero.getTitulo());
 						
 							ArrayList<Numero> numeros = gestionConsultas.cargarComics();
