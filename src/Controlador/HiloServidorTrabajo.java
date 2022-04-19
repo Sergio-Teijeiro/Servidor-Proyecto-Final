@@ -44,7 +44,14 @@ public class HiloServidorTrabajo extends Thread {
                 
                 switch (peticion) {
                     case "altaNumero": numero = (Numero) objeto_entrada.readObject();
-                    	flujo_salida.writeUTF("El mensaje se recibió correctamente. Esta es la respuesta.");
+						numAux = gestionConsultas.existeTituloNumero(numero.getTitulo());
+                    
+						if (numAux != null) {
+							flujo_salida.writeUTF("Ya existe un número con ese título");
+						} else {
+							//gestionNumeros.insertarNumero(numero);
+							flujo_salida.writeUTF("Se ha insertado correctamente el número "+numero.getTitulo());
+						}
                         break;
                     case "baja":
                         break; 
@@ -53,16 +60,10 @@ public class HiloServidorTrabajo extends Thread {
                     case "consultar":
                         break;         
                     case "colByComic": numero = (Numero) objeto_entrada.readObject();
-                    					numAux = gestionConsultas.existeTituloNumero(numero.getTitulo());
                     
-                                        if (numAux != null) {
-                                            flujo_salida.writeUTF("Ya existe un número con ese título");
-                                         } else {
-                                        	 //gestionNumeros.insertarNumero(numero);
-                                             flujo_salida.writeUTF("Se ha insertado correctamente el número "+numero.getTitulo());
-                                         }
-
-            		
+                    		Coleccion coleccion = gestionConsultas.getColeccionPorNumero(numero);
+					
+                    		objeto_salida.writeObject(coleccion);
             			break;  
                     case "cargarComics": ArrayList<Numero> numeros = gestionConsultas.cargarComics();
                     
