@@ -60,14 +60,19 @@ public class gestionConsultas {
 			
 			while (rs.next()) {
 				Blob blob = rs.getBlob("img");
-				byte[] data = blob.getBytes(1, (int)blob.length());
-				BufferedImage img = null;
-				try {
-					img = ImageIO.read(new ByteArrayInputStream(data));
-				} catch (IOException ex) {
-					Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
-				}
+				byte[] data = null;
 				
+				if (blob != null) {
+					data = blob.getBytes(1, (int)blob.length());
+					
+					BufferedImage img = null;
+					try {
+						img = ImageIO.read(new ByteArrayInputStream(data));
+					} catch (IOException ex) {
+						Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
+					}
+				}
+
 				Numero n = new Numero(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getString(4),rs.getString(5),rs.getString(6),data,rs.getInt(8));
 				
 				comics.add(n);

@@ -10,7 +10,12 @@ public class gestionNumeros {
 
 	public static void insertarNumero(Numero numero) {
 		String insercion = "INSERT INTO numeros (titulo,fecha_adquisicion,tapa,estado,resenha,img,id_coleccion) VALUES (?,?,?,?,?,?,?);";
-		InputStream input = new ByteArrayInputStream(numero.getImg());
+		InputStream input = null;
+		
+		if (numero.getImg() != null) {
+			input = new ByteArrayInputStream(numero.getImg());
+		}
+		
 		Connection con = null;
 		
 		try {
@@ -22,7 +27,13 @@ public class gestionNumeros {
 			ps.setString(3, numero.getTapa());
 			ps.setString(4, numero.getEstado());
 			ps.setString(5, numero.getResenha());
-			ps.setBinaryStream(6, input, (int)(numero.getImg().length));
+			
+			if (input != null) {
+				ps.setBinaryStream(6, input, (int)(numero.getImg().length));
+			} else {
+				ps.setObject(6, null);
+			}
+			
 			ps.setInt(7, numero.getIdColeccion());
 			 
 			ps.executeUpdate();
