@@ -197,14 +197,14 @@ public class gestionConsultas {
 	public static Numero existeTituloNumero(String titulo) {
 		Numero numero = null;
 		String consulta = "SELECT * FROM comics.numeros\n"
-				+ "WHERE titulo = ?;";
+				+ "WHERE titulo = ?";
 		
 		try {
 			PreparedStatement ps = Pool.getConexion().prepareStatement(consulta);
 			
 			ps.setString(1, titulo);
 			
-			ResultSet rs = ps.executeQuery(consulta);
+			ResultSet rs = ps.executeQuery();
 			
 			if (rs.next()) {
 				Blob blob = rs.getBlob("img");
