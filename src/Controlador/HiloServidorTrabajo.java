@@ -51,6 +51,10 @@ public class HiloServidorTrabajo extends Thread {
 						} else {
 							gestionNumeros.insertarNumero(numero);
 							flujo_salida.writeUTF("Se ha insertado correctamente el número "+numero.getTitulo());
+							
+							ArrayList<Numero> numeros = gestionConsultas.cargarComics();
+		                    
+                    		objeto_salida.writeObject(numeros);
 						}
                         break;
                     case "baja":
