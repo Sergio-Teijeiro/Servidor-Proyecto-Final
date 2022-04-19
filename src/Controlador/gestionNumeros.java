@@ -99,4 +99,33 @@ public class gestionNumeros {
 		}
 	}
 
+	public static void borrarNumero(Numero numero) {
+		String insercion = "DELETE FROM numeros WHERE id = ?;";
+		
+		Connection con = null;
+		
+		try {
+			con = Pool.getConexion();
+			PreparedStatement ps = con.prepareStatement(insercion);
+			
+			ps.setInt(1, numero.getId());
+			 
+			ps.executeUpdate();
+			
+			con.commit();
+			
+		} catch (SQLException e) {
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		}  finally {
+			Pool.Cerrar();
+		}		
+		
+	}
+
 }
