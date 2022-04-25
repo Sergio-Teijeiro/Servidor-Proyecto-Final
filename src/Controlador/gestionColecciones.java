@@ -29,7 +29,7 @@ public class gestionColecciones {
 			if (input != null) {
 				ps.setBinaryStream(2, input, (int)(coleccion.getImg().length));
 			} else {
-				ps.setObject(6, null);
+				ps.setObject(2, null);
 			}
 			 
 			ps.executeUpdate();
