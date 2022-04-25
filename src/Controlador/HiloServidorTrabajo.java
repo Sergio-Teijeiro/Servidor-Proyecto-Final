@@ -29,6 +29,7 @@ public class HiloServidorTrabajo extends Thread {
         try {
             String peticion = "";
             Numero numero, numAux;
+            Coleccion coleccion, colAux;
 
             //Realiza las peticiones mientras se envien
             while (!peticion.equalsIgnoreCase("Fin")) {
@@ -90,7 +91,7 @@ public class HiloServidorTrabajo extends Thread {
                         break;         
                     case "colByComic": numero = (Numero) objeto_entrada.readObject();
                     
-                    		Coleccion coleccion = gestionConsultas.getColeccionPorNumero(numero);
+                    		coleccion = gestionConsultas.getColeccionPorNumero(numero);
 					
                     		objeto_salida.writeObject(coleccion);
             			break;  
@@ -113,6 +114,20 @@ public class HiloServidorTrabajo extends Thread {
                     case "cargarColecciones": ArrayList<Coleccion> colecciones = gestionConsultas.cargarColecciones();
                     
                     		objeto_salida.writeObject(colecciones);
+                    	break;
+                    case "altaColeccion": coleccion = (Coleccion) objeto_entrada.readObject();
+                    	colAux = gestionConsultas.existeColeccionPorNombre(coleccion.getNombre());
+                    
+                    	if (colAux != null) {
+                    		flujo_salida.writeUTF("Ya existe una colección con ese nombre");
+                    	} else {
+                    		//gestionNumeros.insertarNumero(numero);
+                    		flujo_salida.writeUTF("Se ha insertado correctamente la colección "+coleccion.getNombre());
+						
+                    		colecciones = gestionConsultas.cargarColecciones();
+	                    
+                    		objeto_salida.writeObject(colecciones);
+                    	}
                     	break;
                     default:
                         break;
