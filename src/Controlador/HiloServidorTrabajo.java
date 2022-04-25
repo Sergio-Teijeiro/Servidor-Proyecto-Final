@@ -121,9 +121,9 @@ public class HiloServidorTrabajo extends Thread {
                     	if (colAux != null) {
                     		flujo_salida.writeUTF("Ya existe una colección con ese nombre");
                     	} else {
-                    		//gestionNumeros.insertarNumero(numero);
+                    		gestionColecciones.insertarColeccion(coleccion);
                     		flujo_salida.writeUTF("Se ha insertado correctamente la colección "+coleccion.getNombre());
-						
+
                     		colecciones = gestionConsultas.cargarColecciones();
 	                    
                     		objeto_salida.writeObject(colecciones);
