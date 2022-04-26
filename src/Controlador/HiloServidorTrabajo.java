@@ -133,7 +133,7 @@ public class HiloServidorTrabajo extends Thread {
 						if (colAux == null) {
 							flujo_salida.writeUTF("No existe ninguna colección con ese ID");
 						} else {
-							//gestionColecciones.modificarColeccion(coleccion);
+							gestionColecciones.modificarColeccion(coleccion);
 							flujo_salida.writeUTF("Se ha modificado correctamente la colección "+coleccion.getNombre());
 						
 							colecciones = gestionConsultas.cargarColecciones();
