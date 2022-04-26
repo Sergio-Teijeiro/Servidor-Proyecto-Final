@@ -344,4 +344,45 @@ public class gestionConsultas {
 		return coleccion;
 	}
 
+	public static Coleccion existeIDColeccion(int id) {
+		Coleccion coleccion = null;
+		String consulta = "SELECT * FROM comics.colecciones\n"
+				+ "WHERE id = ?;";
+		
+		try {
+			PreparedStatement ps = Pool.getConexion().prepareStatement(consulta);
+			
+			ps.setInt(1, id);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if (rs.next()) {
+				Blob blob = rs.getBlob("img");
+				byte[] data = null;
+				
+				if (blob != null) {
+					data = blob.getBytes(1, (int)blob.length());
+					
+					BufferedImage img = null;
+					try {
+						img = ImageIO.read(new ByteArrayInputStream(data));
+					} catch (IOException ex) {
+						Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
+					}
+				}
+				
+				coleccion = new Coleccion(rs.getInt(1),rs.getString(2),data);
+			}
+			
+			rs.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}  finally {
+			Pool.Cerrar();
+		}		
+		
+		return coleccion;
+	}
+
 }

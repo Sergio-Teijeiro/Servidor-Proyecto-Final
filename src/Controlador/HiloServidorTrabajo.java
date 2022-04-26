@@ -86,8 +86,6 @@ public class HiloServidorTrabajo extends Thread {
 							objeto_salida.writeObject(numeros);
 						}
                     	
-                        break; 
-                    case "consultar":
                         break;         
                     case "colByComic": numero = (Numero) objeto_entrada.readObject();
                     
@@ -128,6 +126,20 @@ public class HiloServidorTrabajo extends Thread {
 	                    
                     		objeto_salida.writeObject(colecciones);
                     	}
+                    	break;
+                    case "modificarColeccion": coleccion = (Coleccion) objeto_entrada.readObject();
+						colAux = gestionConsultas.existeIDColeccion(coleccion.getId());
+	                    
+						if (colAux == null) {
+							flujo_salida.writeUTF("No existe ninguna colección con ese ID");
+						} else {
+							//gestionColecciones.modificarColeccion(coleccion);
+							flujo_salida.writeUTF("Se ha modificado correctamente la colección "+coleccion.getNombre());
+						
+							colecciones = gestionConsultas.cargarColecciones();
+	                    
+							objeto_salida.writeObject(colecciones);
+						}
                     	break;
                     default:
                         break;
