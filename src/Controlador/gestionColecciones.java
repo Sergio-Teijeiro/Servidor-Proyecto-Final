@@ -87,4 +87,30 @@ public class gestionColecciones {
 		}
 	}
 
+	public static void borrarColeccion(Coleccion coleccion) {
+		String insercion = "DELETE FROM colecciones WHERE id = ?;";
+		Connection con = null;
+
+		try {
+			con = Pool.getConexion();
+			PreparedStatement ps = con.prepareStatement(insercion);
+			
+			ps.setInt(1, coleccion.getId());
+			 
+			ps.executeUpdate();
+			
+			con.commit();
+
+		} catch (SQLException e) {
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		}  finally {
+			Pool.Cerrar();
+		}
+	}
+
 }
