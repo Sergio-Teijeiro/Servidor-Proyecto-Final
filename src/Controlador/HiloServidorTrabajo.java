@@ -147,12 +147,19 @@ public class HiloServidorTrabajo extends Thread {
 						if (colAux == null) {
 							flujo_salida.writeUTF("No existe ninguna colección con ese ID");
 						} else {
-							gestionColecciones.borrarColeccion(coleccion);
-							flujo_salida.writeUTF("Se ha eliminado correctamente la colección "+coleccion.getNombre());
-					
-							colecciones = gestionConsultas.cargarColecciones();
-	                
-							objeto_salida.writeObject(colecciones);
+							ArrayList<Numero> comics = gestionConsultas.buscarComicsPorColeccion(coleccion);
+							
+							if (!comics.isEmpty()) {
+								flujo_salida.writeUTF("Hay números relacionados");
+								objeto_salida.writeObject(comics);
+							} else {
+								gestionColecciones.borrarColeccion(coleccion);
+								flujo_salida.writeUTF("Se ha eliminado correctamente la colección "+coleccion.getNombre());
+						
+								colecciones = gestionConsultas.cargarColecciones();
+		                
+								objeto_salida.writeObject(colecciones);
+							}
 						}
                     	break;
                     default:
