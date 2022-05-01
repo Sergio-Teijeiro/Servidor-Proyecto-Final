@@ -3,8 +3,10 @@ package Controlador;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.sql.*;
+import java.util.ArrayList;
 
 import Modelo.Coleccion;
+import Modelo.Numero;
 
 public class gestionColecciones {
 
@@ -48,7 +50,7 @@ public class gestionColecciones {
 	}
 
 	public static void modificarColeccion(Coleccion coleccion) {
-		String insercion = "UPDATE colecciones SET nombre = ?, img = ? WHERE id = ?;";
+		String modificacion = "UPDATE colecciones SET nombre = ?, img = ? WHERE id = ?;";
 		InputStream input = null;
 		
 		if (coleccion.getImg() != null) {
@@ -59,7 +61,7 @@ public class gestionColecciones {
 
 		try {
 			con = Pool.getConexion();
-			PreparedStatement ps = con.prepareStatement(insercion);
+			PreparedStatement ps = con.prepareStatement(modificacion);
 			
 			ps.setString(1, coleccion.getNombre());
 			
@@ -88,12 +90,12 @@ public class gestionColecciones {
 	}
 
 	public static void borrarColeccion(Coleccion coleccion) {
-		String insercion = "DELETE FROM colecciones WHERE id = ?;";
+		String borrado = "DELETE FROM colecciones WHERE id = ?;";
 		Connection con = null;
 
 		try {
 			con = Pool.getConexion();
-			PreparedStatement ps = con.prepareStatement(insercion);
+			PreparedStatement ps = con.prepareStatement(borrado);
 			
 			ps.setInt(1, coleccion.getId());
 			 
@@ -111,6 +113,44 @@ public class gestionColecciones {
 		}  finally {
 			Pool.Cerrar();
 		}
+	}
+
+	public static void borrarColeccionConNumeros(Coleccion coleccion, ArrayList<Numero> comicsRelacionados) {
+		String borrarCol = "DELETE FROM colecciones WHERE id = ?;", borrarNum = "DELETE FROM numeros WHERE id = ?;";
+		Connection con = null;
+		PreparedStatement ps;
+
+		//borrar primero cada numero y al final coleccion
+		try {
+			con = Pool.getConexion();
+			
+			for (Numero numero : comicsRelacionados) {
+				ps = con.prepareStatement(borrarNum);
+
+				ps.setInt(1, numero.getId());
+
+				ps.executeUpdate();
+			}
+			
+			ps = con.prepareStatement(borrarCol);
+			
+			ps.setInt(1, coleccion.getId());
+			 
+			ps.executeUpdate();
+			
+			con.commit(); //se efectuan todos los borrados solo si todo va bien
+
+		} catch (SQLException e) {
+			try {
+				con.rollback(); //deshace todos los borrados de numeros y coleccion
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		}  finally {
+			Pool.Cerrar();
+		}
+		
 	}
 
 }

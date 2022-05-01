@@ -54,7 +54,7 @@ public class gestionNumeros {
 	}
 
 	public static void modificarNumero(Numero numero) {
-		String insercion = "UPDATE numeros SET titulo = ?, fecha_adquisicion = ?, tapa = ?, estado = ?,resenha = ?,img = ?,id_coleccion = ? WHERE id = ?;";
+		String modificacion = "UPDATE numeros SET titulo = ?, fecha_adquisicion = ?, tapa = ?, estado = ?,resenha = ?,img = ?,id_coleccion = ? WHERE id = ?;";
 		InputStream input = null;
 		
 		if (numero.getImg() != null) {
@@ -65,7 +65,7 @@ public class gestionNumeros {
 		
 		try {
 			con = Pool.getConexion();
-			PreparedStatement ps = con.prepareStatement(insercion);
+			PreparedStatement ps = con.prepareStatement(modificacion);
 			
 			ps.setString(1, numero.getTitulo());
 			ps.setDate(2, numero.getFechaAdquisicion());
@@ -100,13 +100,13 @@ public class gestionNumeros {
 	}
 
 	public static void borrarNumero(Numero numero) {
-		String insercion = "DELETE FROM numeros WHERE id = ?;";
+		String borrado = "DELETE FROM numeros WHERE id = ?;";
 		
 		Connection con = null;
 		
 		try {
 			con = Pool.getConexion();
-			PreparedStatement ps = con.prepareStatement(insercion);
+			PreparedStatement ps = con.prepareStatement(borrado);
 			
 			ps.setInt(1, numero.getId());
 			 

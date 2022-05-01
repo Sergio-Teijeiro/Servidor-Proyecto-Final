@@ -162,6 +162,16 @@ public class HiloServidorTrabajo extends Thread {
 							}
 						}
                     	break;
+                    case "bajaColeccionYNumeros": coleccion = (Coleccion) objeto_entrada.readObject();
+                    	ArrayList<Numero> comicsRelacionados = (ArrayList<Numero>) objeto_entrada.readObject();
+							
+                    	gestionColecciones.borrarColeccionConNumeros(coleccion,comicsRelacionados);
+                    	flujo_salida.writeUTF("Se ha eliminado correctamente la colección "+coleccion.getNombre() + " y sus números");
+
+                    	colecciones = gestionConsultas.cargarColecciones();
+
+                    	objeto_salida.writeObject(colecciones);
+                    	break;                    	
                     default:
                         break;
                 }
