@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import Modelo.Coleccion;
-import Modelo.Numero;
+import Modelo.*;
+import net.sf.jasperreports.engine.JasperPrint;
 
 public class HiloServidorTrabajo extends Thread {
     Socket socketCliente;
@@ -171,7 +171,13 @@ public class HiloServidorTrabajo extends Thread {
                     	colecciones = gestionConsultas.cargarColecciones();
 
                     	objeto_salida.writeObject(colecciones);
-                    	break;                    	
+                    	break;
+                    case "informeColecciones": InputStream is=this.getClass().getResourceAsStream("/plantillas/informeColecciones.jrxml");
+                    
+                    	JasperPrint informe = generarInformes.generarInformeColecciones(is);
+                    	
+                    	objeto_salida.writeObject(informe);
+                    	break;
                     default:
                         break;
                 }
