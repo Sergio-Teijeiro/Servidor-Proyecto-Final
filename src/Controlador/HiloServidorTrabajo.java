@@ -178,6 +178,13 @@ public class HiloServidorTrabajo extends Thread {
                     	
                     	objeto_salida.writeObject(informe);
                     	break;
+                    case "informeColPorNombre": coleccion = (Coleccion) objeto_entrada.readObject();
+                    	is=this.getClass().getResourceAsStream("/plantillas/informeColPorNombre.jrxml");
+                    
+                    	informe = generarInformes.generarInformeColPorNombre(is,coleccion);
+                	
+                    	objeto_salida.writeObject(informe);
+                	break;
                     default:
                         break;
                 }
