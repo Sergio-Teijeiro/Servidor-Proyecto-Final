@@ -79,7 +79,7 @@ ORDER BY anho;]]>
 numeros.estado AS estado, numeros.resenha AS resenha,numeros.img AS imgComic, numeros.id_coleccion AS id_coleccion,
 colecciones.id AS idCol, colecciones.nombre AS nombreCol, colecciones.img AS imgCol
 FROM comics.numeros INNER JOIN comics.colecciones ON
-(numeros.id_coleccion = colecciones.id) ORDER BY tituloComic;]]>
+(numeros.id_coleccion = colecciones.id);]]>
 		</queryString>
 		<field name="idComic" class="java.lang.Integer">
 			<property name="com.jaspersoft.studio.field.name" value="idComic"/>
@@ -254,7 +254,7 @@ FROM comics.numeros INNER JOIN comics.colecciones ON
 								</reportElement>
 								<box topPadding="5" leftPadding="5" bottomPadding="5" rightPadding="5"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Sylfaen" size="18"/>
+									<font fontName="Trebuchet MS" size="18"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{tituloComic}]]></textFieldExpression>
 							</textField>
@@ -292,11 +292,11 @@ FROM comics.numeros INNER JOIN comics.colecciones ON
 						</jr:columnHeader>
 						<jr:columnFooter style="Table_CH" height="30" rowSpan="1"/>
 						<jr:detailCell style="Table_TD" height="440">
-							<textField textAdjust="ScaleFont">
+							<textField textAdjust="ScaleFont" pattern="dd/MM/yyyy">
 								<reportElement style="Detail" x="0" y="0" width="120" height="440" uuid="1d790109-0301-4819-ad68-91213db395dd"/>
 								<box leftPadding="10" rightPadding="10"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Sylfaen" size="18"/>
+									<font fontName="Trebuchet MS" size="18"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{fecha_adquisicion} != null ? $F{fecha_adquisicion} : "Desconocida"]]></textFieldExpression>
 							</textField>
@@ -322,7 +322,7 @@ FROM comics.numeros INNER JOIN comics.colecciones ON
 								<reportElement style="Detail" x="0" y="0" width="70" height="440" uuid="ecc9d949-e93e-4ffc-8ad4-41b28b226ded"/>
 								<box leftPadding="2"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Sylfaen" size="18"/>
+									<font fontName="Trebuchet MS" size="18"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{tapa} !=null ? $F{tapa} : "Desconocida"]]></textFieldExpression>
 							</textField>
@@ -348,7 +348,7 @@ FROM comics.numeros INNER JOIN comics.colecciones ON
 								<reportElement style="Detail" x="0" y="0" width="80" height="440" uuid="9c9ba202-e20e-4751-829e-28572d5e4673"/>
 								<box leftPadding="10" rightPadding="10"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Sylfaen" size="18"/>
+									<font fontName="Trebuchet MS" size="18"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{estado} !=null ? $F{estado} : "Desconocido"]]></textFieldExpression>
 							</textField>
@@ -372,9 +372,9 @@ FROM comics.numeros INNER JOIN comics.colecciones ON
 						<jr:detailCell style="Table_TD" height="440">
 							<textField textAdjust="ScaleFont">
 								<reportElement style="Detail" x="0" y="0" width="220" height="440" uuid="60f90336-57df-42f8-ad91-f64eecd2844b"/>
-								<box leftPadding="10" rightPadding="10"/>
+								<box topPadding="5" leftPadding="10" bottomPadding="5" rightPadding="10"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Sylfaen" size="18"/>
+									<font fontName="Trebuchet MS" size="18"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{resenha} != null ? $F{resenha} : "Desconocida"]]></textFieldExpression>
 							</textField>
@@ -402,7 +402,7 @@ FROM comics.numeros INNER JOIN comics.colecciones ON
 								</reportElement>
 								<box topPadding="10" leftPadding="10" bottomPadding="10" rightPadding="10"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Sylfaen" size="18"/>
+									<font fontName="Trebuchet MS" size="18"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{nombreCol}]]></textFieldExpression>
 							</textField>
