@@ -97,8 +97,8 @@ public class generarInformes {
 			
 			Map<String,Object> params = new HashMap<String,Object>();
 			
-			params.put("nombreCol", coleccion.getNombre());
-			params.put("idCol", coleccion.getId());
+			params.put("nombre_col", coleccion.getNombre());
+			params.put("id_col", coleccion.getId());
 			
 			informe = JasperFillManager.fillReport(plantilla, params, Pool.getConexion());
 			
