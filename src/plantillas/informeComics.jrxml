@@ -79,7 +79,7 @@ ORDER BY anho;]]>
 numeros.estado AS estado, numeros.resenha AS resenha,numeros.img AS imgComic, numeros.id_coleccion AS id_coleccion,
 colecciones.id AS idCol, colecciones.nombre AS nombreCol, colecciones.img AS imgCol
 FROM comics.numeros INNER JOIN comics.colecciones ON
-(numeros.id_coleccion = colecciones.id);]]>
+(numeros.id_coleccion = colecciones.id) LIMIT 1000;]]>
 		</queryString>
 		<field name="idComic" class="java.lang.Integer">
 			<property name="com.jaspersoft.studio.field.name" value="idComic"/>
