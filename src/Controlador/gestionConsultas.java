@@ -55,9 +55,9 @@ public class gestionConsultas {
 		return coleccion;
 	}
 
-	public static ArrayList<Numero> cargarComics() {
+	public static ArrayList<Numero> cargarComics(int offset) {
 		ArrayList<Numero> comics = new ArrayList<>();
-		String consulta = "SELECT * FROM numeros";
+		String consulta = "SELECT * FROM numeros ORDER BY titulo LIMIT "+offset+",100";
 		
 		try {
 			Statement st = Pool.getConexion().createStatement();
@@ -99,7 +99,7 @@ public class gestionConsultas {
 		ArrayList<Numero> comics = new ArrayList<>();
 		String consulta = "SELECT * FROM comics.numeros\n"
 				+ "WHERE id_coleccion IN (SELECT id FROM colecciones\n"
-				+ "						WHERE nombre LIKE '%"+nombreColeccion+"%');";
+				+ "						WHERE nombre LIKE '%"+nombreColeccion+"%') ORDER BY titulo;";
 		
 		try {
 			Statement st = Pool.getConexion().createStatement();
@@ -140,7 +140,7 @@ public class gestionConsultas {
 	public static ArrayList<Numero> cargarComicsPorTitulo(String titulo) {
 		ArrayList<Numero> comics = new ArrayList<>();
 		String consulta = "SELECT * FROM comics.numeros\n"
-				+ "WHERE titulo LIKE '%"+titulo+"%';";
+				+ "WHERE titulo LIKE '%"+titulo+"%' ORDER BY titulo;";
 		
 		try {
 			Statement st = Pool.getConexion().createStatement();
@@ -388,7 +388,7 @@ public class gestionConsultas {
 	public static ArrayList<Numero> buscarComicsPorColeccion(Coleccion coleccion) {
 		ArrayList<Numero> comics = new ArrayList<>();
 		String consulta = "SELECT * FROM comics.numeros\n"
-				+ "WHERE id_coleccion = "+coleccion.getId()+";";
+				+ "WHERE id_coleccion = "+coleccion.getId()+" ORDER BY titulo;";
 		
 		try {
 			Statement st = Pool.getConexion().createStatement();

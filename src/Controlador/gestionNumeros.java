@@ -1,8 +1,14 @@
 package Controlador;
 
+import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.imageio.ImageIO;
 
 import Modelo.Numero;
 
@@ -126,6 +132,32 @@ public class gestionNumeros {
 			Pool.Cerrar();
 		}		
 		
+	}
+
+	public static int getNumComics() {
+		int numComics = 0;
+		String consulta = "SELECT COUNT(*) FROM comics.numeros";
+		
+		try {
+			Statement ps = Pool.getConexion().createStatement();
+			
+			ResultSet rs = ps.executeQuery(consulta);
+			
+			if (rs.next()) {
+				numComics = rs.getInt(1);
+			}
+			
+			rs.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  finally {
+			Pool.Cerrar();
+		}				
+		
+		
+		return numComics;
 	}
 
 }

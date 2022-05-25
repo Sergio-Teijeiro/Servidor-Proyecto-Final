@@ -44,7 +44,8 @@ public class HiloServidorTrabajo extends Thread {
                 peticion = flujo_entrada.readUTF();
                 
                 switch (peticion) {
-                    case "altaNumero": numero = (Numero) objeto_entrada.readObject();
+                    case "altaNumero": int offset = (int) objeto_entrada.readObject();
+                    	numero = (Numero) objeto_entrada.readObject();
 						numAux = gestionConsultas.existeTituloNumero(numero.getTitulo());
                     
 						if (numAux != null) {
@@ -53,12 +54,13 @@ public class HiloServidorTrabajo extends Thread {
 							gestionNumeros.insertarNumero(numero);
 							flujo_salida.writeUTF("Se ha insertado correctamente el número "+numero.getTitulo());
 							
-							ArrayList<Numero> numeros = gestionConsultas.cargarComics();
+							ArrayList<Numero> numeros = gestionConsultas.cargarComics(offset);
 		                    
                     		objeto_salida.writeObject(numeros);
 						}
                         break;
-                    case "bajaNumero": numero = (Numero) objeto_entrada.readObject();
+                    case "bajaNumero": offset = (int) objeto_entrada.readObject();
+                    	numero = (Numero) objeto_entrada.readObject();
 						numAux = gestionConsultas.existeIDNumero(numero.getId());
                     
 						if (numAux == null) {
@@ -67,12 +69,13 @@ public class HiloServidorTrabajo extends Thread {
 							gestionNumeros.borrarNumero(numero);
 							flujo_salida.writeUTF("Se ha eliminado correctamente el número "+numero.getTitulo());
 					
-							ArrayList<Numero> numeros = gestionConsultas.cargarComics();
+							ArrayList<Numero> numeros = gestionConsultas.cargarComics(offset);
                     
 							objeto_salida.writeObject(numeros);
 						}
                         break; 
-                    case "modificarNumero": numero = (Numero) objeto_entrada.readObject();
+                    case "modificarNumero": offset = (int) objeto_entrada.readObject();
+                    	numero = (Numero) objeto_entrada.readObject();
 						numAux = gestionConsultas.existeIDNumero(numero.getId());
                     
 						if (numAux == null) {
@@ -81,7 +84,7 @@ public class HiloServidorTrabajo extends Thread {
 							gestionNumeros.modificarNumero(numero);
 							flujo_salida.writeUTF("Se ha modificado correctamente el número "+numero.getTitulo());
 						
-							ArrayList<Numero> numeros = gestionConsultas.cargarComics();
+							ArrayList<Numero> numeros = gestionConsultas.cargarComics(offset);
 	                    
 							objeto_salida.writeObject(numeros);
 						}
@@ -93,7 +96,8 @@ public class HiloServidorTrabajo extends Thread {
 					
                     		objeto_salida.writeObject(coleccion);
             			break;  
-                    case "cargarComics": ArrayList<Numero> numeros = gestionConsultas.cargarComics();
+                    case "cargarComics": offset = (int) objeto_entrada.readObject();
+                    		ArrayList<Numero> numeros = gestionConsultas.cargarComics(offset);
                     
                     		objeto_salida.writeObject(numeros);
                     	break;
@@ -198,6 +202,10 @@ public class HiloServidorTrabajo extends Thread {
 	            	
 	                	objeto_salida.writeObject(informe);
 	                	break;
+                    case "getNumeroComics": int numComics = gestionNumeros.getNumComics();
+                    
+                    	objeto_salida.writeObject(numComics);
+                    	break;
                     default:
                         break;
                 }
