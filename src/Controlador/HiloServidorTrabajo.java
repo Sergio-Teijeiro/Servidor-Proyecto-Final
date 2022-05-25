@@ -189,9 +189,10 @@ public class HiloServidorTrabajo extends Thread {
                 	
                     	objeto_salida.writeObject(informe);
                     	break;
-                    case "informeComics": is=this.getClass().getResourceAsStream("/plantillas/informeComics.jrxml");
+                    case "informeComics": offset = (int) objeto_entrada.readObject();
+                    	is=this.getClass().getResourceAsStream("/plantillas/informeComics.jrxml");
 	                
-	                	informe = generarInformes.generarInformeComics(is);
+	                	informe = generarInformes.generarInformeComics(is,offset);
 	            	
 	                	objeto_salida.writeObject(informe);
 	                	break;

@@ -64,13 +64,15 @@ public class generarInformes {
     	return informe;
 	}
 
-	public static JasperPrint generarInformeComics(InputStream is) {
+	public static JasperPrint generarInformeComics(InputStream is, int offset) {
 		JasperPrint informe = null;
 		
     	try {
 			JasperReport plantilla = JasperCompileManager.compileReport(is);
 			
 			Map<String,Object> params = new HashMap<String,Object>();
+			
+			params.put("offset", offset);
 			
 			informe = JasperFillManager.fillReport(plantilla, params, Pool.getConexion());
 			
