@@ -44,45 +44,75 @@ public class HiloServidorTrabajo extends Thread {
                 peticion = flujo_entrada.readUTF();
                 
                 switch (peticion) {
-                    case "altaNumero": int offset = (int) objeto_entrada.readObject();
+                    case "altaNumero": String idioma = flujo_entrada.readUTF();
+                    	int offset = (int) objeto_entrada.readObject();
                     	numero = (Numero) objeto_entrada.readObject();
 						numAux = gestionConsultas.existeTituloNumero(numero.getTitulo());
                     
 						if (numAux != null) {
-							flujo_salida.writeUTF("Ya existe un número con ese título");
+							if (idioma.equals("es")) {
+								flujo_salida.writeUTF("Ya existe un número con ese título");
+							} else {
+								flujo_salida.writeUTF("Xa existe un número con ese título");
+							}
 						} else {
 							gestionNumeros.insertarNumero(numero);
-							flujo_salida.writeUTF("Se ha insertado correctamente el número "+numero.getTitulo());
+							
+							if (idioma.equals("es")) {
+								flujo_salida.writeUTF("Se ha insertado correctamente el número "+numero.getTitulo());
+							} else {
+								flujo_salida.writeUTF("Insertouse correctamente o número "+numero.getTitulo());
+							}
 							
 							ArrayList<Numero> numeros = gestionConsultas.cargarComics(offset);
 		                    
                     		objeto_salida.writeObject(numeros);
 						}
                         break;
-                    case "bajaNumero": offset = (int) objeto_entrada.readObject();
+                    case "bajaNumero": idioma = flujo_entrada.readUTF();
+                    	offset = (int) objeto_entrada.readObject();
                     	numero = (Numero) objeto_entrada.readObject();
 						numAux = gestionConsultas.existeIDNumero(numero.getId());
                     
 						if (numAux == null) {
-							flujo_salida.writeUTF("No existe ningún número con ese ID");
+							if (idioma.equals("es")) {
+								flujo_salida.writeUTF("No existe ningún número con ese ID");
+							} else {
+								flujo_salida.writeUTF("Non existe ningún número con ese ID");
+							}
 						} else {
 							gestionNumeros.borrarNumero(numero);
-							flujo_salida.writeUTF("Se ha eliminado correctamente el número "+numero.getTitulo());
+							
+							if (idioma.equals("es")) {
+								flujo_salida.writeUTF("Se ha eliminado correctamente el número "+numero.getTitulo());
+							} else {
+								flujo_salida.writeUTF("Eliminouse correctamente o número "+numero.getTitulo());
+							}
 					
 							ArrayList<Numero> numeros = gestionConsultas.cargarComics(offset);
                     
 							objeto_salida.writeObject(numeros);
 						}
                         break; 
-                    case "modificarNumero": offset = (int) objeto_entrada.readObject();
+                    case "modificarNumero": idioma = flujo_entrada.readUTF();
+                    	offset = (int) objeto_entrada.readObject();
                     	numero = (Numero) objeto_entrada.readObject();
 						numAux = gestionConsultas.existeIDNumero(numero.getId());
                     
 						if (numAux == null) {
-							flujo_salida.writeUTF("No existe ningún número con ese ID");
+							if (idioma.equals("es")) {
+								flujo_salida.writeUTF("No existe ningún número con ese ID");
+							} else {
+								flujo_salida.writeUTF("Non existe ningún número con ese ID");
+							}
 						} else {
 							gestionNumeros.modificarNumero(numero);
-							flujo_salida.writeUTF("Se ha modificado correctamente el número "+numero.getTitulo());
+							
+							if (idioma.equals("es")) {
+								flujo_salida.writeUTF("Se ha modificado correctamente el número "+numero.getTitulo());
+							} else {
+								flujo_salida.writeUTF("Modificouse correctamente o número "+numero.getTitulo());
+							}
 						
 							ArrayList<Numero> numeros = gestionConsultas.cargarComics(offset);
 	                    
@@ -117,48 +147,83 @@ public class HiloServidorTrabajo extends Thread {
                     
                     		objeto_salida.writeObject(colecciones);
                     	break;
-                    case "altaColeccion": coleccion = (Coleccion) objeto_entrada.readObject();
+                    case "altaColeccion": idioma = flujo_entrada.readUTF();
+                    	coleccion = (Coleccion) objeto_entrada.readObject();
                     	colAux = gestionConsultas.existeColeccionPorNombre(coleccion.getNombre());
                     
                     	if (colAux != null) {
-                    		flujo_salida.writeUTF("Ya existe una colección con ese nombre");
+                    		if (idioma.equals("es")) {
+                    			flujo_salida.writeUTF("Ya existe una colección con ese nombre");
+                    		} else {
+                    			flujo_salida.writeUTF("Xa existe unha colección con ese nome");
+                    		}
                     	} else {
                     		gestionColecciones.insertarColeccion(coleccion);
-                    		flujo_salida.writeUTF("Se ha insertado correctamente la colección "+coleccion.getNombre());
+                    		
+                    		if (idioma.equals("es")) {
+                    			flujo_salida.writeUTF("Se ha insertado correctamente la colección "+coleccion.getNombre());
+                    		} else {
+                    			flujo_salida.writeUTF("Insertouse correctamente a colección "+coleccion.getNombre());
+                    		}
 
                     		colecciones = gestionConsultas.cargarColecciones();
 	                    
                     		objeto_salida.writeObject(colecciones);
                     	}
                     	break;
-                    case "modificarColeccion": coleccion = (Coleccion) objeto_entrada.readObject();
+                    case "modificarColeccion": idioma = flujo_entrada.readUTF();
+                    	coleccion = (Coleccion) objeto_entrada.readObject();
 						colAux = gestionConsultas.existeIDColeccion(coleccion.getId());
 	                    
 						if (colAux == null) {
-							flujo_salida.writeUTF("No existe ninguna colección con ese ID");
+							if (idioma.equals("es")) {
+								flujo_salida.writeUTF("No existe ninguna colección con ese ID");
+							} else {
+								flujo_salida.writeUTF("Non existe ningunha colección con ese ID");
+							}
 						} else {
 							gestionColecciones.modificarColeccion(coleccion);
-							flujo_salida.writeUTF("Se ha modificado correctamente la colección "+coleccion.getNombre());
+							
+							if (idioma.equals("es")) {
+								flujo_salida.writeUTF("Se ha modificado correctamente la colección "+coleccion.getNombre());
+							} else {
+								flujo_salida.writeUTF("Modificouse correctamente a colección "+coleccion.getNombre());
+							}
 						
 							colecciones = gestionConsultas.cargarColecciones();
 	                    
 							objeto_salida.writeObject(colecciones);
 						}
                     	break;
-                    case "bajaColeccion": coleccion = (Coleccion) objeto_entrada.readObject();
+                    case "bajaColeccion": idioma = flujo_entrada.readUTF();
+                    	coleccion = (Coleccion) objeto_entrada.readObject();
 						colAux = gestionConsultas.existeIDColeccion(coleccion.getId());
 	                    
 						if (colAux == null) {
-							flujo_salida.writeUTF("No existe ninguna colección con ese ID");
+							if (idioma.equals("es")) {
+								flujo_salida.writeUTF("No existe ninguna colección con ese ID");
+							} else {
+								flujo_salida.writeUTF("Non existe ningunha colección con ese ID");
+							}
 						} else {
 							ArrayList<Numero> comics = gestionConsultas.buscarComicsPorColeccion(coleccion);
 							
 							if (!comics.isEmpty()) {
-								flujo_salida.writeUTF("Hay números relacionados");
+								if (idioma.equals("es")) {
+									flujo_salida.writeUTF("Hay números relacionados");
+								} else {
+									flujo_salida.writeUTF("Hai números relacionados");
+								}
+								
 								objeto_salida.writeObject(comics);
 							} else {
 								gestionColecciones.borrarColeccion(coleccion);
-								flujo_salida.writeUTF("Se ha eliminado correctamente la colección "+coleccion.getNombre());
+								
+								if (idioma.equals("es")) {
+									flujo_salida.writeUTF("Se ha eliminado correctamente la colección "+coleccion.getNombre());
+								} else {
+									flujo_salida.writeUTF("Eliminouse correctamente a colección "+coleccion.getNombre());
+								}
 						
 								colecciones = gestionConsultas.cargarColecciones();
 		                
@@ -166,11 +231,17 @@ public class HiloServidorTrabajo extends Thread {
 							}
 						}
                     	break;
-                    case "bajaColeccionYNumeros": coleccion = (Coleccion) objeto_entrada.readObject();
+                    case "bajaColeccionYNumeros": idioma = flujo_entrada.readUTF();
+                    	coleccion = (Coleccion) objeto_entrada.readObject();
                     	ArrayList<Numero> comicsRelacionados = (ArrayList<Numero>) objeto_entrada.readObject();
 							
                     	gestionColecciones.borrarColeccionConNumeros(coleccion,comicsRelacionados);
-                    	flujo_salida.writeUTF("Se ha eliminado correctamente la colección "+coleccion.getNombre() + " y sus números");
+                    	
+                    	if (idioma.equals("es")) {
+                    		flujo_salida.writeUTF("Se ha eliminado correctamente la colección "+coleccion.getNombre() + " y sus números");
+                    	} else {
+                    		flujo_salida.writeUTF("Eliminouse correctamente a colección "+coleccion.getNombre() + " e os seus números");
+                    	}
 
                     	colecciones = gestionConsultas.cargarColecciones();
 
