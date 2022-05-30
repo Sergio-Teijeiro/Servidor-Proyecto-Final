@@ -10,7 +10,11 @@ import javax.swing.JOptionPane;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.commons.dbcp2.BasicDataSourceFactory;
 
-
+/**
+ * Clase para manejar las conexiones con la base de datos, en este caso local.
+ * @author admin
+ *
+ */
 public class Pool {
 
     static Connection Con;
@@ -18,6 +22,11 @@ public class Pool {
     private static String BD = "comics";//*******Indica la BD **************
     private static String IP = "localhost";//*******Indica la IP ***************
 
+    /**
+     * Permite conectar con la base de datos a través de los datos establecidos en un fichero de texto
+     * @return Conexión con la base de datos, es nula
+     * @throws SQLException
+     */
     public static Connection IniciaPoolconFichero() throws SQLException {
         try {
             Properties propiedades = new Properties();
@@ -29,6 +38,12 @@ public class Pool {
         }
         return null;
      }
+    
+    /**
+     * Permite conectar con la base de datos con los parámetros predefinidos. En este caso, conecta con la base de datos local 'comics' (alojada en MySQL). Solo permite recuperar una conexión abierta a la vez.
+     * @return Conexión con la base de datos, es nula
+     * @throws SQLException
+     */
     public static Connection IniciaPool() throws SQLException {
         try {
         
@@ -58,7 +73,11 @@ public class Pool {
         return null;
      }
 
-   
+    /**
+     * Devuelve una conexión con la base de datos para realizar operaciones, sin importar si se conectó con el fichero o de manera predefinida
+     * @return Conexión con la base de datos correspondiente
+     * @throws SQLException
+     */
     public static Connection getConexion() throws SQLException {
     //    System.out.println("Conexiones activas Antes"+basicdatasource.getNumActive());
         Con = basicdatasource.getConnection();
@@ -67,6 +86,10 @@ public class Pool {
         return Con;
         
     }
+    
+    /**
+     * Cierra la última conexión con la base de datos
+     */
     public static void Cerrar(){
         try {
             Con.close();

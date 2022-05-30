@@ -12,8 +12,18 @@ import javax.imageio.ImageIO;
 
 import Modelo.*;
 
+/**
+ * Clase encargada de gestionar las diferentes consultas que realiza el servidor a la base de datos
+ * @author admin
+ *
+ */
 public class gestionConsultas {
 
+	/**
+	 * Obtiene la colección cuyo identificador coincida con el identificador de colección del número enviado
+	 * @param numero Número enviado, necesario para obtener el identificador de colección
+	 * @return Colección correspondiente
+	 */
 	public static Coleccion getColeccionPorNumero(Numero numero) {
 		Coleccion coleccion = null;
 		String consulta = "SELECT * FROM colecciones WHERE id = ?";
@@ -55,6 +65,11 @@ public class gestionConsultas {
 		return coleccion;
 	}
 
+	/**
+	 * Obtiene una lista de cómics en un determinado rango, de 100 en 100
+	 * @param offset Rango en el que se empiezan a recuperar los cómics
+	 * @return Lista de cómics correspondiente
+	 */
 	public static ArrayList<Numero> cargarComics(int offset) {
 		ArrayList<Numero> comics = new ArrayList<>();
 		String consulta = "SELECT * FROM numeros ORDER BY titulo LIMIT "+offset+",100";
@@ -95,6 +110,11 @@ public class gestionConsultas {
 		return comics;
 	}
 
+	/**
+	 * Obtiene una lista de cómics de la colección con el nombre enviado
+	 * @param nombreColeccion Nombre de la colección a buscar
+	 * @return Lista de cómics correspondiente
+	 */
 	public static ArrayList<Numero> cargarComicsPorColeccion(String nombreColeccion) {
 		ArrayList<Numero> comics = new ArrayList<>();
 		String consulta = "SELECT * FROM comics.numeros\n"
@@ -137,6 +157,11 @@ public class gestionConsultas {
 		return comics;
 	}
 
+	/**
+	 * Obtiene una lista de cómics cuyo título contenga la cadena enviada
+	 * @param titulo Cadena enviada para comparar con el título
+	 * @return Lista de cómics correspondiente
+	 */
 	public static ArrayList<Numero> cargarComicsPorTitulo(String titulo) {
 		ArrayList<Numero> comics = new ArrayList<>();
 		String consulta = "SELECT * FROM comics.numeros\n"
@@ -178,6 +203,10 @@ public class gestionConsultas {
 		return comics;
 	}
 
+	/**
+	 * Obtiene todas las colecciones correspondientes ordenadas alfabéticamente por nombre
+	 * @return Lista de todas las colecciones
+	 */
 	public static ArrayList<Coleccion> cargarColecciones() {
 		ArrayList<Coleccion> colecciones = new ArrayList<>();
 		String consulta = "SELECT * FROM comics.colecciones\n"
@@ -219,6 +248,11 @@ public class gestionConsultas {
 		return colecciones;
 	}
 
+	/**
+	 * Devuelve el número con el título enviado
+	 * @param titulo Título del cómic a buscar
+	 * @return Número correspondiente
+	 */
 	public static Numero existeTituloNumero(String titulo) {
 		Numero numero = null;
 		String consulta = "SELECT * FROM comics.numeros\n"
@@ -261,6 +295,11 @@ public class gestionConsultas {
 		return numero;
 	}
 
+	/**
+	 * Devuelve el número con el identificador enviado
+	 * @param id Identificador del cómic a buscar
+	 * @return Número correspondiente
+	 */
 	public static Numero existeIDNumero(int id) {
 		Numero numero = null;
 		String consulta = "SELECT * FROM comics.numeros\n"
@@ -303,6 +342,11 @@ public class gestionConsultas {
 		return numero;
 	}
 
+	/**
+	 * Devuelve la colección con el nombre enviado
+	 * @param nombre Nombre de la colección a buscar
+	 * @return Colección correspondiente
+	 */
 	public static Coleccion existeColeccionPorNombre(String nombre) {
 		Coleccion coleccion = null;
 		String consulta = "SELECT * FROM comics.colecciones\n"
@@ -344,6 +388,11 @@ public class gestionConsultas {
 		return coleccion;
 	}
 
+	/**
+	 * Devuelve la colección con el identificador enviado
+	 * @param id Identificador de la colección a buscar
+	 * @return Colección correspondiente
+	 */
 	public static Coleccion existeIDColeccion(int id) {
 		Coleccion coleccion = null;
 		String consulta = "SELECT * FROM comics.colecciones\n"
@@ -385,6 +434,11 @@ public class gestionConsultas {
 		return coleccion;
 	}
 
+	/**
+	 * Obtiene una lista de los cómics de la colección especificada, ordenados alfabéticamente por título
+	 * @param coleccion Colección a buscar
+	 * @return Lista de cómics correspondiente
+	 */
 	public static ArrayList<Numero> buscarComicsPorColeccion(Coleccion coleccion) {
 		ArrayList<Numero> comics = new ArrayList<>();
 		String consulta = "SELECT * FROM comics.numeros\n"

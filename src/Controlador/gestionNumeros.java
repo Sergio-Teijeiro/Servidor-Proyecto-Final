@@ -12,8 +12,17 @@ import javax.imageio.ImageIO;
 
 import Modelo.Numero;
 
+/**
+ * Clase encargada de realizar operaciones con los números y consultar datos necesarios para ello.
+ * @author admin
+ *
+ */
 public class gestionNumeros {
 
+	/**
+	 * Inserta el número enviado en la base de datos, estableciendo como identificador el número siguiente al último identificador de cómic en la base de datos.
+	 * @param numero Número a insertar
+	 */
 	public static void insertarNumero(Numero numero) {
 		String insercion = "INSERT INTO numeros (titulo,fecha_adquisicion,tapa,estado,resenha,img,id_coleccion) VALUES (?,?,?,?,?,?,?);", increment = "ALTER TABLE comics.numeros AUTO_INCREMENT = ?;";
 		InputStream input = null;
@@ -84,6 +93,10 @@ public class gestionNumeros {
 		}
 	}
 
+	/**
+	 * Modifica el número enviado en la base de datos
+	 * @param numero Número a modificar
+	 */
 	public static void modificarNumero(Numero numero) {
 		String modificacion = "UPDATE numeros SET titulo = ?, fecha_adquisicion = ?, tapa = ?, estado = ?,resenha = ?,img = ?,id_coleccion = ? WHERE id = ?;";
 		InputStream input = null;
@@ -130,6 +143,10 @@ public class gestionNumeros {
 		}
 	}
 
+	/**
+	 * Borra el número enviado de la base de datos
+	 * @param numero Número a borrar
+	 */
 	public static void borrarNumero(Numero numero) {
 		String borrado = "DELETE FROM numeros WHERE id = ?;";
 		
@@ -159,6 +176,10 @@ public class gestionNumeros {
 		
 	}
 
+	/**
+	 * Devuelve el número total de cómics disponibles en la base de datos
+	 * @return Total de cómics
+	 */
 	public static int getNumComics() {
 		int numComics = 0;
 		String consulta = "SELECT COUNT(*) FROM comics.numeros";
@@ -185,6 +206,11 @@ public class gestionNumeros {
 		return numComics;
 	}
 	
+	/**
+	 * Obtiene el último identificador de cómic disponible en la base de datos
+	 * @param con Conexión con la base de datos actual
+	 * @return Último ID de cómic
+	 */
 	private static int getUltimoId(Connection con) {
 		int id = 0;
 		String query = "SELECT MAX(id) from comics.numeros";

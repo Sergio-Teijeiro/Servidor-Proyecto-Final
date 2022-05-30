@@ -25,6 +25,11 @@ import org.apache.commons.io.IOUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+/**
+ * Interfaz gráfica del servidor. Muestra su estado, el puerto al que se conecta y permite conectarlo o desconectarlo. Lo primero que hace es conectar con la base de datos.
+ * @author admin
+ *
+ */
 public class Servidor extends JFrame {
 	
 	ServerSocket skServidor;

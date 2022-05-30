@@ -15,10 +15,20 @@ import java.util.logging.Logger;
 import Modelo.*;
 import net.sf.jasperreports.engine.JasperPrint;
 
+/**
+ * Hilo que usa el servidor para atender cada petición de un cliente
+ * @author admin
+ *
+ */
 public class HiloServidorTrabajo extends Thread {
     Socket socketCliente;
     ArrayList<Socket> listaSockets;
 
+    /**
+     * Constructor principal
+     * @param skCliente Socket del cliente
+     * @param listaSockets Lista de todos los sockets de clientes que ya realizaron alguna petición
+     */
     HiloServidorTrabajo(Socket skCliente, ArrayList<Socket> listaSockets) {
         this.socketCliente = skCliente;
         this.listaSockets = listaSockets;

@@ -8,8 +8,17 @@ import java.util.ArrayList;
 import Modelo.Coleccion;
 import Modelo.Numero;
 
+/**
+ * Clase encargada de realizar operaciones con las colecciones y consultar datos necesarios para ello.
+ * @author admin
+ *
+ */
 public class gestionColecciones {
 
+	/**
+	 * Inserta la colección enviada en la base de datos, estableciendo como identificador el número siguiente al último identificador de colección en la base de datos.
+	 * @param coleccion Colección a insertar
+	 */
 	public static void insertarColeccion(Coleccion coleccion) {
 		String insercion = "INSERT INTO colecciones (nombre,img) VALUES (?,?);", increment = "ALTER TABLE comics.colecciones AUTO_INCREMENT = ?;";
 		InputStream input = null;
@@ -74,6 +83,11 @@ public class gestionColecciones {
 		
 	}
 
+	/**
+	 * Obtiene el último identificador de colección disponible en la base de datos
+	 * @param con Conexión con la base de datos actual
+	 * @return Último ID de colección
+	 */
 	private static int getUltimoId(Connection con) {
 		int id = 0;
 		String query = "SELECT MAX(id) from comics.colecciones";
@@ -97,6 +111,10 @@ public class gestionColecciones {
 		return id;
 	}
 
+	/**
+	 * Modifica la colección enviada en la base de datos
+	 * @param coleccion Colección a modificar
+	 */
 	public static void modificarColeccion(Coleccion coleccion) {
 		String modificacion = "UPDATE colecciones SET nombre = ?, img = ? WHERE id = ?;";
 		InputStream input = null;
@@ -137,6 +155,10 @@ public class gestionColecciones {
 		}
 	}
 
+	/**
+	 * Borra la colección enviada de la base de datos
+	 * @param coleccion Colección a borrar
+	 */
 	public static void borrarColeccion(Coleccion coleccion) {
 		String borrado = "DELETE FROM colecciones WHERE id = ?;";
 		Connection con = null;
@@ -163,6 +185,11 @@ public class gestionColecciones {
 		}
 	}
 
+	/**
+	 * Borra todos los números de una colección primero y luego la colección si no hubo errores. En caso contrario, deshace todos los borrados.
+	 * @param coleccion Colección a borrar
+	 * @param comicsRelacionados Números de la colección a borrar
+	 */
 	public static void borrarColeccionConNumeros(Coleccion coleccion, ArrayList<Numero> comicsRelacionados) {
 		String borrarCol = "DELETE FROM colecciones WHERE id = ?;", borrarNum = "DELETE FROM numeros WHERE id = ?;";
 		Connection con = null;

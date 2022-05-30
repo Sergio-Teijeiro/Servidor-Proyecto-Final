@@ -5,6 +5,11 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
+/**
+ * Hilo cuyo trabajo es estar siempre escuchando las peticiones de los clientes
+ * @author admin
+ *
+ */
 public class HiloServidor extends Thread {
     ServerSocket socketServidor;
     ArrayList<Socket> listaSockets;
