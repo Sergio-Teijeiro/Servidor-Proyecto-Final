@@ -15,7 +15,7 @@ import Modelo.Numero;
 public class gestionNumeros {
 
 	public static void insertarNumero(Numero numero) {
-		String insercion = "INSERT INTO numeros (titulo,fecha_adquisicion,tapa,estado,resenha,img,id_coleccion) VALUES (?,?,?,?,?,?,?);";
+		String insercion = "INSERT INTO numeros (titulo,fecha_adquisicion,tapa,estado,resenha,img,id_coleccion) VALUES (?,?,?,?,?,?,?);", increment = "ALTER TABLE comics.numeros AUTO_INCREMENT = ?;";
 		InputStream input = null;
 		
 		if (numero.getImg() != null) {
@@ -23,6 +23,31 @@ public class gestionNumeros {
 		}
 		
 		Connection con = null;
+		
+		try {
+			con = Pool.getConexion();
+			PreparedStatement ps = con.prepareStatement(increment);
+			
+			int ultimoId = getUltimoId(con);
+			
+			ps.setInt(1, ultimoId);
+			
+			ps.execute();
+			
+			con.commit();
+			
+		} catch (SQLException e) {
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+			
+			return;
+		}  finally {
+			Pool.Cerrar();
+		}		
 		
 		try {
 			con = Pool.getConexion();
@@ -158,6 +183,29 @@ public class gestionNumeros {
 		
 		
 		return numComics;
+	}
+	
+	private static int getUltimoId(Connection con) {
+		int id = 0;
+		String query = "SELECT MAX(id) from comics.numeros";
+		
+		try {
+			Statement st = con.createStatement();
+			
+			ResultSet rs = st.executeQuery(query);
+			
+			if (rs.next()) {
+				id = rs.getInt(1);
+			}
+			
+			rs.close();
+			st.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return id;
 	}
 
 }
