@@ -34,11 +34,9 @@ public class generarInformes {
 			JasperViewer.viewReport(informe, false);
 			
 		} catch (JRException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		} finally {
 			Pool.Cerrar();
 		}
@@ -68,11 +66,9 @@ public class generarInformes {
 			JasperViewer.viewReport(informe, false);
 			
 		} catch (JRException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		} finally {
 			Pool.Cerrar();
 		}
@@ -101,11 +97,9 @@ public class generarInformes {
 			JasperViewer.viewReport(informe, false);
 			
 		} catch (JRException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		} finally {
 			Pool.Cerrar();
 		}
@@ -135,11 +129,9 @@ public class generarInformes {
 			JasperViewer.viewReport(informe, false);
 			
 		} catch (JRException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		} finally {
 			Pool.Cerrar();
 		}

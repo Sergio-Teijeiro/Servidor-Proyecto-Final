@@ -49,9 +49,9 @@ public class gestionNumeros {
 			try {
 				con.rollback();
 			} catch (SQLException e1) {
-				e1.printStackTrace();
+				//e1.printStackTrace();
 			}
-			e.printStackTrace();
+			//e.printStackTrace();
 			
 			return;
 		}  finally {
@@ -84,10 +84,9 @@ public class gestionNumeros {
 			try {
 				con.rollback();
 			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				//e1.printStackTrace();
 			}
-			e.printStackTrace();
+			//e.printStackTrace();
 		}  finally {
 			Pool.Cerrar();
 		}
@@ -134,10 +133,9 @@ public class gestionNumeros {
 			try {
 				con.rollback();
 			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				//e1.printStackTrace();
 			}
-			e.printStackTrace();
+			//e.printStackTrace();
 		}  finally {
 			Pool.Cerrar();
 		}
@@ -166,10 +164,9 @@ public class gestionNumeros {
 			try {
 				con.rollback();
 			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				//e1.printStackTrace();
 			}
-			e.printStackTrace();
+			//e.printStackTrace();
 		}  finally {
 			Pool.Cerrar();
 		}		
@@ -196,8 +193,7 @@ public class gestionNumeros {
 			rs.close();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		}  finally {
 			Pool.Cerrar();
 		}				
@@ -228,7 +224,7 @@ public class gestionNumeros {
 			st.close();
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		
 		return id;

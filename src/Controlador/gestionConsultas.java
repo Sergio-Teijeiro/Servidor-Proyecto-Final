@@ -46,7 +46,7 @@ public class gestionConsultas {
 					try {
 						img = ImageIO.read(new ByteArrayInputStream(data));
 					} catch (IOException ex) {
-						Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
+						//Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
 					}
 				}
 				
@@ -56,8 +56,7 @@ public class gestionConsultas {
 			rs.close();
 			
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			//e1.printStackTrace();
 		} finally {
 			Pool.Cerrar();
 		}
@@ -89,7 +88,7 @@ public class gestionConsultas {
 					try {
 						img = ImageIO.read(new ByteArrayInputStream(data));
 					} catch (IOException ex) {
-						Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
+						//Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
 					}
 				}
 
@@ -101,8 +100,7 @@ public class gestionConsultas {
 			rs.close();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		}  finally {
 			Pool.Cerrar();
 		}
@@ -136,7 +134,7 @@ public class gestionConsultas {
 					try {
 						img = ImageIO.read(new ByteArrayInputStream(data));
 					} catch (IOException ex) {
-						Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
+						//Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
 					}
 				}
 				
@@ -148,8 +146,7 @@ public class gestionConsultas {
 			rs.close();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		}  finally {
 			Pool.Cerrar();
 		}
@@ -182,7 +179,7 @@ public class gestionConsultas {
 					try {
 						img = ImageIO.read(new ByteArrayInputStream(data));
 					} catch (IOException ex) {
-						Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
+						//Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
 					}
 				}
 				
@@ -194,8 +191,7 @@ public class gestionConsultas {
 			rs.close();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		}  finally {
 			Pool.Cerrar();
 		}
@@ -227,7 +223,7 @@ public class gestionConsultas {
 					try {
 						img = ImageIO.read(new ByteArrayInputStream(data));
 					} catch (IOException ex) {
-						Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
+						//Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
 					}
 				}
 				
@@ -239,8 +235,7 @@ public class gestionConsultas {
 			rs.close();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		}  finally {
 			Pool.Cerrar();
 		}
@@ -276,7 +271,7 @@ public class gestionConsultas {
 					try {
 						img = ImageIO.read(new ByteArrayInputStream(data));
 					} catch (IOException ex) {
-						Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
+						//Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
 					}
 				}
 				
@@ -286,8 +281,7 @@ public class gestionConsultas {
 			rs.close();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		}  finally {
 			Pool.Cerrar();
 		}		
@@ -323,7 +317,7 @@ public class gestionConsultas {
 					try {
 						img = ImageIO.read(new ByteArrayInputStream(data));
 					} catch (IOException ex) {
-						Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
+						//Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
 					}
 				}
 				
@@ -333,8 +327,7 @@ public class gestionConsultas {
 			rs.close();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		}  finally {
 			Pool.Cerrar();
 		}		
@@ -370,7 +363,7 @@ public class gestionConsultas {
 					try {
 						img = ImageIO.read(new ByteArrayInputStream(data));
 					} catch (IOException ex) {
-						Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
+						//Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
 					}
 				}
 				
@@ -380,7 +373,7 @@ public class gestionConsultas {
 			rs.close();
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}  finally {
 			Pool.Cerrar();
 		}		
@@ -416,7 +409,7 @@ public class gestionConsultas {
 					try {
 						img = ImageIO.read(new ByteArrayInputStream(data));
 					} catch (IOException ex) {
-						Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
+						//Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
 					}
 				}
 				
@@ -426,7 +419,7 @@ public class gestionConsultas {
 			rs.close();
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}  finally {
 			Pool.Cerrar();
 		}		
@@ -459,7 +452,7 @@ public class gestionConsultas {
 					try {
 						img = ImageIO.read(new ByteArrayInputStream(data));
 					} catch (IOException ex) {
-						Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
+						//Logger.getLogger(gestionConsultas.class.getName()).log(Level.SEVERE, null, ex);
 					}
 				}
 				
@@ -471,8 +464,7 @@ public class gestionConsultas {
 			rs.close();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		}  finally {
 			Pool.Cerrar();
 		}

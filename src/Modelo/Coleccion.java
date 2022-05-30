@@ -12,7 +12,6 @@ public class Coleccion implements Serializable {
 	int id;
 	String nombre;
 	byte[] img;
-	//BufferedImage img;
 	
 	public Coleccion() {
 		super();

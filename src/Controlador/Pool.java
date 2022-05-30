@@ -59,7 +59,7 @@ public class Pool {
             basicdatasource.setMaxTotal(1);//conexiones del pool
             //basicdatasource.setInitialSize(5); //Cuando el pool comienza el número mínimo de conexiones
             basicdatasource.setMinIdle(50); //Numero minimo de conexiones inactivas que queremos que haya
-            basicdatasource.setMaxIdle(100); //Numero máximo de conexciones inactivas que queremos que haya
+            basicdatasource.setMaxIdle(100); //Numero maximo de conexciones inactivas que queremos que haya
             basicdatasource.setMaxWaitMillis(1000); //Tiempo que espera en las conexiones.
          
             //Si queremos comprobar que funciona bastaría con hacer un getConexion

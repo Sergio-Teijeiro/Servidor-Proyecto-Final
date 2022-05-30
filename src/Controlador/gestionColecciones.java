@@ -45,9 +45,9 @@ public class gestionColecciones {
 			try {
 				con.rollback();
 			} catch (SQLException e1) {
-				e1.printStackTrace();
+				//e1.printStackTrace();
 			}
-			e.printStackTrace();
+			//e.printStackTrace();
 			
 			return;
 		}  finally {
@@ -74,9 +74,9 @@ public class gestionColecciones {
 			try {
 				con.rollback();
 			} catch (SQLException e1) {
-				e1.printStackTrace();
+				//e1.printStackTrace();
 			}
-			e.printStackTrace();
+			//e.printStackTrace();
 		}  finally {
 			Pool.Cerrar();
 		}
@@ -105,7 +105,7 @@ public class gestionColecciones {
 			st.close();
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		
 		return id;
@@ -147,9 +147,9 @@ public class gestionColecciones {
 			try {
 				con.rollback();
 			} catch (SQLException e1) {
-				e1.printStackTrace();
+				//e1.printStackTrace();
 			}
-			e.printStackTrace();
+			//e.printStackTrace();
 		}  finally {
 			Pool.Cerrar();
 		}
@@ -177,9 +177,9 @@ public class gestionColecciones {
 			try {
 				con.rollback();
 			} catch (SQLException e1) {
-				e1.printStackTrace();
+				//e1.printStackTrace();
 			}
-			e.printStackTrace();
+			//e.printStackTrace();
 		}  finally {
 			Pool.Cerrar();
 		}
@@ -219,9 +219,9 @@ public class gestionColecciones {
 			try {
 				con.rollback(); //deshace todos los borrados de numeros y coleccion
 			} catch (SQLException e1) {
-				e1.printStackTrace();
+				//e1.printStackTrace();
 			}
-			e.printStackTrace();
+			//e.printStackTrace();
 		}  finally {
 			Pool.Cerrar();
 		}
