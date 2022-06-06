@@ -74,15 +74,12 @@ ORDER BY anho;]]>
 	<subDataset name="tableDataset" uuid="e12c7124-b1ef-404c-b6ce-108e5775b5c3">
 		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="ConexionLibreria"/>
-		<parameter name="offset" class="java.lang.Integer">
-			<defaultValueExpression><![CDATA[$P{offset}]]></defaultValueExpression>
-		</parameter>
 		<queryString language="SQL">
 			<![CDATA[SELECT numeros.id AS idComic, numeros.titulo AS tituloComic, numeros.fecha_adquisicion AS fecha_adquisicion, numeros.tapa as tapa,
 numeros.estado AS estado, numeros.resenha AS resenha,numeros.img AS imgComic, numeros.id_coleccion AS id_coleccion,
 colecciones.id AS idCol, colecciones.nombre AS nombreCol, colecciones.img AS imgCol
 FROM comics.numeros INNER JOIN comics.colecciones ON
-(numeros.id_coleccion = colecciones.id) LIMIT $P{offset},1000;]]>
+(numeros.id_coleccion = colecciones.id) LIMIT 500;]]>
 		</queryString>
 		<field name="idComic" class="java.lang.Integer">
 			<property name="com.jaspersoft.studio.field.name" value="idComic"/>
@@ -140,7 +137,6 @@ FROM comics.numeros INNER JOIN comics.colecciones ON
 			<property name="com.jaspersoft.studio.field.tree.path" value="colecciones"/>
 		</field>
 	</subDataset>
-	<parameter name="offset" class="java.lang.Integer"/>
 	<title>
 		<band height="130" splitType="Stretch">
 			<image onErrorType="Blank">
@@ -224,9 +220,6 @@ FROM comics.numeros INNER JOIN comics.colecciones ON
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
 					<datasetRun subDataset="tableDataset" uuid="083e737e-fb93-431b-bda1-c1e6cc972fd8">
-						<datasetParameter name="offset">
-							<datasetParameterExpression><![CDATA[$P{offset}]]></datasetParameterExpression>
-						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
 					<jr:column width="150" uuid="0c674803-668b-4b77-964e-546075dd3cb5">
