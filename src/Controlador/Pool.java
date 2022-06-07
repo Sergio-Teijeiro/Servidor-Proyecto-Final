@@ -74,7 +74,7 @@ public class Pool {
      }
 
     /**
-     * Devuelve una conexi�n con la base de datos para realizar operaciones, sin importar si se conectó con el fichero o de manera predefinida
+     * Devuelve una conexión con la base de datos para realizar operaciones, sin importar si se conectó con el fichero o de manera predefinida
      * @return Conexión con la base de datos correspondiente
      * @throws SQLException
      */
