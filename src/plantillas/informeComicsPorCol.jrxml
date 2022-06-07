@@ -164,7 +164,7 @@ ORDER BY numComics DESC]]>
 				<textField textAdjust="ScaleFont">
 					<reportElement x="0" y="0" width="660" height="66" forecolor="#FFFFFF" uuid="cb79790b-033b-40da-88e7-7f414674a6f4"/>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
-						<font fontName="Segoe UI Emoji" size="50" isBold="false"/>
+						<font fontName="DejaVu Sans" size="50" isBold="false"/>
 					</textElement>
 					<textFieldExpression><![CDATA["Cómics (" + $P{nombre_col} + ")"]]></textFieldExpression>
 				</textField>
@@ -238,7 +238,7 @@ ORDER BY numComics DESC]]>
 									<property name="com.jaspersoft.studio.element.name" value="numRegistros"/>
 								</reportElement>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Calibri" size="14" isBold="true"/>
+									<font fontName="DejaVu Sans" size="14" isBold="true"/>
 								</textElement>
 								<textFieldExpression><![CDATA["Total registros: " +$V{REPORT_COUNT}]]></textFieldExpression>
 							</textField>

@@ -16,7 +16,7 @@ import Modelo.*;
 import net.sf.jasperreports.engine.JasperPrint;
 
 /**
- * Hilo que usa el servidor para atender cada petición de un cliente
+ * Hilo que usa el servidor para atender cada peticiï¿½n de un cliente
  * @author admin
  *
  */
@@ -27,7 +27,7 @@ public class HiloServidorTrabajo extends Thread {
     /**
      * Constructor principal
      * @param skCliente Socket del cliente
-     * @param listaSockets Lista de todos los sockets de clientes que ya realizaron alguna petición
+     * @param listaSockets Lista de todos los sockets de clientes que ya realizaron alguna peticiï¿½n
      */
     HiloServidorTrabajo(Socket skCliente, ArrayList<Socket> listaSockets) {
         this.socketCliente = skCliente;
@@ -61,17 +61,17 @@ public class HiloServidorTrabajo extends Thread {
                     
 						if (numAux != null) {
 							if (idioma.equals("es")) {
-								flujo_salida.writeUTF("Ya existe un número con ese título");
+								flujo_salida.writeUTF("Ya existe un nÃºmero con ese tÃ­tulo");
 							} else {
-								flujo_salida.writeUTF("Xa existe un número con ese título");
+								flujo_salida.writeUTF("Xa existe un nÃºmero con ese tÃ­tulo");
 							}
 						} else {
 							gestionNumeros.insertarNumero(numero);
 							
 							if (idioma.equals("es")) {
-								flujo_salida.writeUTF("Se ha insertado correctamente el número "+numero.getTitulo());
+								flujo_salida.writeUTF("Se ha insertado correctamente el nÃºmero "+numero.getTitulo());
 							} else {
-								flujo_salida.writeUTF("Insertouse correctamente o número "+numero.getTitulo());
+								flujo_salida.writeUTF("Insertouse correctamente o nÃºmero "+numero.getTitulo());
 							}
 							
 							ArrayList<Numero> numeros = gestionConsultas.cargarComics(offset);
@@ -86,17 +86,17 @@ public class HiloServidorTrabajo extends Thread {
                     
 						if (numAux == null) {
 							if (idioma.equals("es")) {
-								flujo_salida.writeUTF("No existe ningún número con ese ID");
+								flujo_salida.writeUTF("No existe ningÃºn nÃºmero con ese ID");
 							} else {
-								flujo_salida.writeUTF("Non existe ningún número con ese ID");
+								flujo_salida.writeUTF("Non existe ningÃºn nÃºmero con ese ID");
 							}
 						} else {
 							gestionNumeros.borrarNumero(numero);
 							
 							if (idioma.equals("es")) {
-								flujo_salida.writeUTF("Se ha eliminado correctamente el número "+numero.getTitulo());
+								flujo_salida.writeUTF("Se ha eliminado correctamente el nÃºmero "+numero.getTitulo());
 							} else {
-								flujo_salida.writeUTF("Eliminouse correctamente o número "+numero.getTitulo());
+								flujo_salida.writeUTF("Eliminouse correctamente o nÃºmero "+numero.getTitulo());
 							}
 					
 							ArrayList<Numero> numeros = gestionConsultas.cargarComics(offset);
@@ -111,17 +111,17 @@ public class HiloServidorTrabajo extends Thread {
                     
 						if (numAux == null) {
 							if (idioma.equals("es")) {
-								flujo_salida.writeUTF("No existe ningún número con ese ID");
+								flujo_salida.writeUTF("No existe ningÃºn nÃºmero con ese ID");
 							} else {
-								flujo_salida.writeUTF("Non existe ningún número con ese ID");
+								flujo_salida.writeUTF("Non existe ningÃºn nÃºmero con ese ID");
 							}
 						} else {
 							gestionNumeros.modificarNumero(numero);
 							
 							if (idioma.equals("es")) {
-								flujo_salida.writeUTF("Se ha modificado correctamente el número "+numero.getTitulo());
+								flujo_salida.writeUTF("Se ha modificado correctamente el nÃºmero "+numero.getTitulo());
 							} else {
-								flujo_salida.writeUTF("Modificouse correctamente o número "+numero.getTitulo());
+								flujo_salida.writeUTF("Modificouse correctamente o nÃºmero "+numero.getTitulo());
 							}
 						
 							ArrayList<Numero> numeros = gestionConsultas.cargarComics(offset);
@@ -163,17 +163,17 @@ public class HiloServidorTrabajo extends Thread {
                     
                     	if (colAux != null) {
                     		if (idioma.equals("es")) {
-                    			flujo_salida.writeUTF("Ya existe una colección con ese nombre");
+                    			flujo_salida.writeUTF("Ya existe una colecciÃ³n con ese nombre");
                     		} else {
-                    			flujo_salida.writeUTF("Xa existe unha colección con ese nome");
+                    			flujo_salida.writeUTF("Xa existe unha colecciÃ³n con ese nome");
                     		}
                     	} else {
                     		gestionColecciones.insertarColeccion(coleccion);
                     		
                     		if (idioma.equals("es")) {
-                    			flujo_salida.writeUTF("Se ha insertado correctamente la colección "+coleccion.getNombre());
+                    			flujo_salida.writeUTF("Se ha insertado correctamente la colecciÃ³n "+coleccion.getNombre());
                     		} else {
-                    			flujo_salida.writeUTF("Insertouse correctamente a colección "+coleccion.getNombre());
+                    			flujo_salida.writeUTF("Insertouse correctamente a colecciÃ³n "+coleccion.getNombre());
                     		}
 
                     		colecciones = gestionConsultas.cargarColecciones();
@@ -187,17 +187,17 @@ public class HiloServidorTrabajo extends Thread {
 	                    
 						if (colAux == null) {
 							if (idioma.equals("es")) {
-								flujo_salida.writeUTF("No existe ninguna colección con ese ID");
+								flujo_salida.writeUTF("No existe ninguna colecciÃ³n con ese ID");
 							} else {
-								flujo_salida.writeUTF("Non existe ningunha colección con ese ID");
+								flujo_salida.writeUTF("Non existe ningunha colecciÃ³n con ese ID");
 							}
 						} else {
 							gestionColecciones.modificarColeccion(coleccion);
 							
 							if (idioma.equals("es")) {
-								flujo_salida.writeUTF("Se ha modificado correctamente la colección "+coleccion.getNombre());
+								flujo_salida.writeUTF("Se ha modificado correctamente la colecciÃ³n "+coleccion.getNombre());
 							} else {
-								flujo_salida.writeUTF("Modificouse correctamente a colección "+coleccion.getNombre());
+								flujo_salida.writeUTF("Modificouse correctamente a colecciÃ³n "+coleccion.getNombre());
 							}
 						
 							colecciones = gestionConsultas.cargarColecciones();
@@ -211,18 +211,18 @@ public class HiloServidorTrabajo extends Thread {
 	                    
 						if (colAux == null) {
 							if (idioma.equals("es")) {
-								flujo_salida.writeUTF("No existe ninguna colección con ese ID");
+								flujo_salida.writeUTF("No existe ninguna colecciÃ³n con ese ID");
 							} else {
-								flujo_salida.writeUTF("Non existe ningunha colección con ese ID");
+								flujo_salida.writeUTF("Non existe ningunha colecciÃ³n con ese ID");
 							}
 						} else {
 							ArrayList<Numero> comics = gestionConsultas.buscarComicsPorColeccion(coleccion);
 							
 							if (!comics.isEmpty()) {
 								if (idioma.equals("es")) {
-									flujo_salida.writeUTF("Hay números relacionados");
+									flujo_salida.writeUTF("Hay nÃºmeros relacionados");
 								} else {
-									flujo_salida.writeUTF("Hai números relacionados");
+									flujo_salida.writeUTF("Hai nÃºmeros relacionados");
 								}
 								
 								objeto_salida.writeObject(comics);
@@ -230,9 +230,9 @@ public class HiloServidorTrabajo extends Thread {
 								gestionColecciones.borrarColeccion(coleccion);
 								
 								if (idioma.equals("es")) {
-									flujo_salida.writeUTF("Se ha eliminado correctamente la colección "+coleccion.getNombre());
+									flujo_salida.writeUTF("Se ha eliminado correctamente la colecciÃ³n "+coleccion.getNombre());
 								} else {
-									flujo_salida.writeUTF("Eliminouse correctamente a colección "+coleccion.getNombre());
+									flujo_salida.writeUTF("Eliminouse correctamente a colecciÃ³n "+coleccion.getNombre());
 								}
 						
 								colecciones = gestionConsultas.cargarColecciones();
@@ -248,9 +248,9 @@ public class HiloServidorTrabajo extends Thread {
                     	gestionColecciones.borrarColeccionConNumeros(coleccion,comicsRelacionados);
                     	
                     	if (idioma.equals("es")) {
-                    		flujo_salida.writeUTF("Se ha eliminado correctamente la colección "+coleccion.getNombre() + " y sus números");
+                    		flujo_salida.writeUTF("Se ha eliminado correctamente la colecciÃ³n "+coleccion.getNombre() + " y sus nÃºmeros");
                     	} else {
-                    		flujo_salida.writeUTF("Eliminouse correctamente a colección "+coleccion.getNombre() + " e os seus números");
+                    		flujo_salida.writeUTF("Eliminouse correctamente a colecciÃ³n "+coleccion.getNombre() + " e os seus nÃºmeros");
                     	}
 
                     	colecciones = gestionConsultas.cargarColecciones();
@@ -270,10 +270,10 @@ public class HiloServidorTrabajo extends Thread {
                 	
                     	objeto_salida.writeObject(informe);
                     	break;
-                    case "informeComics": offset = (int) objeto_entrada.readObject();
+                    case "informeComics":
                     	is=this.getClass().getResourceAsStream("/plantillas/informeComics.jrxml");
 	                
-	                	informe = generarInformes.generarInformeComics(is,offset);
+	                	informe = generarInformes.generarInformeComics(is);
 	            	
 	                	objeto_salida.writeObject(informe);
 	                	break;
@@ -293,7 +293,7 @@ public class HiloServidorTrabajo extends Thread {
                 }
             }
 
-            // Se cierra la conexión
+            // Se cierra la conexiï¿½n
             socketCliente.close();
 
         } catch (IOException ex) {
