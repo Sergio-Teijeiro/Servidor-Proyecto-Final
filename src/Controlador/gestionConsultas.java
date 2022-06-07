@@ -20,9 +20,9 @@ import Modelo.*;
 public class gestionConsultas {
 
 	/**
-	 * Obtiene la colecci髇 cuyo identificador coincida con el identificador de colecci髇 del n鷐ero enviado
-	 * @param numero N鷐ero enviado, necesario para obtener el identificador de colecci髇
-	 * @return Colecci髇 correspondiente
+	 * Obtiene la colecci贸n cuyo identificador coincida con el identificador de colecci贸n del n煤mero enviado
+	 * @param numero N煤mero enviado, necesario para obtener el identificador de colecci贸n
+	 * @return Colecci贸n correspondiente
 	 */
 	public static Coleccion getColeccionPorNumero(Numero numero) {
 		Coleccion coleccion = null;
@@ -65,9 +65,9 @@ public class gestionConsultas {
 	}
 
 	/**
-	 * Obtiene una lista de c髆ics en un determinado rango, de 100 en 100
-	 * @param offset Rango en el que se empiezan a recuperar los c髆ics
-	 * @return Lista de c髆ics correspondiente
+	 * Obtiene una lista de c贸mics en un determinado rango, de 100 en 100
+	 * @param offset Rango en el que se empiezan a recuperar los c贸mics
+	 * @return Lista de c贸mics correspondiente
 	 */
 	public static ArrayList<Numero> cargarComics(int offset) {
 		ArrayList<Numero> comics = new ArrayList<>();
@@ -109,9 +109,9 @@ public class gestionConsultas {
 	}
 
 	/**
-	 * Obtiene una lista de c髆ics de la colecci髇 con el nombre enviado
-	 * @param nombreColeccion Nombre de la colecci髇 a buscar
-	 * @return Lista de c髆ics correspondiente
+	 * Obtiene una lista de c贸mics de la colecci贸n con el nombre enviado
+	 * @param nombreColeccion Nombre de la colecci贸n a buscar
+	 * @return Lista de c贸mics correspondiente
 	 */
 	public static ArrayList<Numero> cargarComicsPorColeccion(String nombreColeccion) {
 		ArrayList<Numero> comics = new ArrayList<>();
@@ -155,9 +155,9 @@ public class gestionConsultas {
 	}
 
 	/**
-	 * Obtiene una lista de c髆ics cuyo t韙ulo contenga la cadena enviada
-	 * @param titulo Cadena enviada para comparar con el t韙ulo
-	 * @return Lista de c髆ics correspondiente
+	 * Obtiene una lista de c贸mics cuyo t铆tulo contenga la cadena enviada
+	 * @param titulo Cadena enviada para comparar con el t铆tulo
+	 * @return Lista de c贸mics correspondiente
 	 */
 	public static ArrayList<Numero> cargarComicsPorTitulo(String titulo) {
 		ArrayList<Numero> comics = new ArrayList<>();
@@ -200,7 +200,7 @@ public class gestionConsultas {
 	}
 
 	/**
-	 * Obtiene todas las colecciones correspondientes ordenadas alfab閠icamente por nombre
+	 * Obtiene todas las colecciones correspondientes ordenadas alfab茅ticamente por nombre
 	 * @return Lista de todas las colecciones
 	 */
 	public static ArrayList<Coleccion> cargarColecciones() {
@@ -244,9 +244,9 @@ public class gestionConsultas {
 	}
 
 	/**
-	 * Devuelve el n鷐ero con el t韙ulo enviado
-	 * @param titulo T韙ulo del c髆ic a buscar
-	 * @return N鷐ero correspondiente
+	 * Devuelve el n煤mero con el t铆tulo enviado
+	 * @param titulo T铆tulo del c贸mic a buscar
+	 * @return N煤mero correspondiente
 	 */
 	public static Numero existeTituloNumero(String titulo) {
 		Numero numero = null;
@@ -290,9 +290,9 @@ public class gestionConsultas {
 	}
 
 	/**
-	 * Devuelve el n鷐ero con el identificador enviado
-	 * @param id Identificador del c髆ic a buscar
-	 * @return N鷐ero correspondiente
+	 * Devuelve el n煤mero con el identificador enviado
+	 * @param id Identificador del c贸mic a buscar
+	 * @return N煤mero correspondiente
 	 */
 	public static Numero existeIDNumero(int id) {
 		Numero numero = null;
@@ -336,9 +336,9 @@ public class gestionConsultas {
 	}
 
 	/**
-	 * Devuelve la colecci髇 con el nombre enviado
-	 * @param nombre Nombre de la colecci髇 a buscar
-	 * @return Colecci髇 correspondiente
+	 * Devuelve la colecci贸n con el nombre enviado
+	 * @param nombre Nombre de la colecci贸n a buscar
+	 * @return Colecci贸n correspondiente
 	 */
 	public static Coleccion existeColeccionPorNombre(String nombre) {
 		Coleccion coleccion = null;
@@ -382,9 +382,9 @@ public class gestionConsultas {
 	}
 
 	/**
-	 * Devuelve la colecci髇 con el identificador enviado
-	 * @param id Identificador de la colecci髇 a buscar
-	 * @return Colecci髇 correspondiente
+	 * Devuelve la colecci贸n con el identificador enviado
+	 * @param id Identificador de la colecci贸n a buscar
+	 * @return Colecci贸n correspondiente
 	 */
 	public static Coleccion existeIDColeccion(int id) {
 		Coleccion coleccion = null;
@@ -428,9 +428,9 @@ public class gestionConsultas {
 	}
 
 	/**
-	 * Obtiene una lista de los c髆ics de la colecci髇 especificada, ordenados alfab閠icamente por t韙ulo
-	 * @param coleccion Colecci髇 a buscar
-	 * @return Lista de c髆ics correspondiente
+	 * Obtiene una lista de los c贸mics de la colecci贸n especificada, ordenados alfab茅ticamente por t铆tulo
+	 * @param coleccion Colecci贸n a buscar
+	 * @return Lista de c贸mics correspondiente
 	 */
 	public static ArrayList<Numero> buscarComicsPorColeccion(Coleccion coleccion) {
 		ArrayList<Numero> comics = new ArrayList<>();

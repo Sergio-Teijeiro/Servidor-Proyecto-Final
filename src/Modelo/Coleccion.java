@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.Serializable;
 
 /**
- * Modelo de colección. Contiene el ID de la colección asociada, su nombre y el array de bytes de su imagen
+ * Modelo de colecciÃ³n. Contiene el ID de la colecciÃ³n asociada, su nombre y el array de bytes de su imagen
  * @author sergio
  *
  */

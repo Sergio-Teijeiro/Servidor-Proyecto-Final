@@ -5,8 +5,8 @@ import java.io.Serializable;
 import java.sql.Date;
 
 /**
- * Modelo de número. Contiene el ID del número asociado, su título, la fecha de adquisición, su tapa (dura o blanda), su estado, su reseña, 
- * el array de bytes de su imagen y el ID de su colección asociada.
+ * Modelo de nÃºmero. Contiene el ID del nÃºmero asociado, su tÃ­tulo, la fecha de adquisiciÃ³n, su tapa (dura o blanda), su estado, su reseÃ±a, 
+ * el array de bytes de su imagen y el ID de su colecciÃ³n asociada.
  * @author sergio
  *
  */

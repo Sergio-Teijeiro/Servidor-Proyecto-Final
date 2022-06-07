@@ -17,7 +17,7 @@ import net.sf.jasperreports.view.JasperViewer;
 public class generarInformes {
 
 	/**
-	 * Genera el informe de todas las colecciones a trav�s de una plantilla y lo muestra por pantalla
+	 * Genera el informe de todas las colecciones a través de una plantilla y lo muestra por pantalla
 	 * @param is Fuente de la plantilla del informe (fichero .jrxml)
 	 * @return Informe de todas las colecciones basado en la plantilla
 	 */
@@ -45,10 +45,10 @@ public class generarInformes {
 	}
 
 	/**
-	 * Genera el informe de la colecci�n con el nombre especificado a trav�s de una plantilla y lo muestra por pantalla
+	 * Genera el informe de la colección con el nombre especificado a través de una plantilla y lo muestra por pantalla
 	 * @param is Fuente de la plantilla del informe (fichero .jrxml)
-	 * @param coleccion Colecci�n en la que basa el informe
-	 * @return Informe de la colecci�n basado en la plantilla
+	 * @param coleccion Colección en la que basa el informe
+	 * @return Informe de la colección basado en la plantilla
 	 */
 	public static JasperPrint generarInformeColPorNombre(InputStream is, Coleccion coleccion) {
 		JasperPrint informe = null;
@@ -77,10 +77,9 @@ public class generarInformes {
 	}
 
 	/**
-	 * Genera el informe de 100 c�mics a partir del rango especificado a trav�s de una plantilla y lo muestra por pantalla
+	 * Genera el informe de los primeros 500 cómics a través de una plantilla y lo muestra por pantalla
 	 * @param is Fuente de la plantilla del informe (fichero .jrxml)
-	 * @param offset Rango a partir del cual se buscar�n los c�mics
-	 * @return Informe de los c�mics basado en la plantilla
+	 * @return Informe de los cómics basado en la plantilla
 	 */
 	public static JasperPrint generarInformeComics(InputStream is) {
 		JasperPrint informe = null;
@@ -106,10 +105,10 @@ public class generarInformes {
 	}
 
 	/**
-	 * Genera el informe de todos los c�mics de la colecci�n especificada a trav�s de una plantilla y lo muestra por pantalla
+	 * Genera el informe de todos los cómics de la colección especificada a través de una plantilla y lo muestra por pantalla
 	 * @param is Fuente de la plantilla del informe (fichero .jrxml)
-	 * @param coleccion Colecci�n de los c�mics a buscar
-	 * @return Informe de los c�mics basado en la plantilla
+	 * @param coleccion Colección de los cómics a buscar
+	 * @return Informe de los cómics basado en la plantilla
 	 */
 	public static JasperPrint generarInformeComicsPorCol(InputStream is, Coleccion coleccion) {
 		JasperPrint informe = null;

@@ -23,8 +23,8 @@ public class Pool {
     private static String IP = "localhost";//*******Indica la IP ***************
 
     /**
-     * Permite conectar con la base de datos a través de los datos establecidos en un fichero de texto
-     * @return Conexión con la base de datos, es nula
+     * Permite conectar con la base de datos a travÃ©s de los datos establecidos en un fichero de texto
+     * @return ConexiÃ³n con la base de datos, es nula
      * @throws SQLException
      */
     public static Connection IniciaPoolconFichero() throws SQLException {
@@ -34,14 +34,14 @@ public class Pool {
             basicdatasource = (BasicDataSource) BasicDataSourceFactory.createDataSource(propiedades);
       
         } catch (Exception e) {
-           JOptionPane.showMessageDialog(null, "Error en la conexión a la base de datos (Pool con Fichero)");
+           JOptionPane.showMessageDialog(null, "Error en la conexiï¿½n a la base de datos (Pool con Fichero)");
         }
         return null;
      }
     
     /**
-     * Permite conectar con la base de datos con los parámetros predefinidos. En este caso, conecta con la base de datos local 'comics' (alojada en MySQL). Solo permite recuperar una conexión abierta a la vez.
-     * @return Conexión con la base de datos, es nula
+     * Permite conectar con la base de datos con los parÃ¡metros predefinidos. En este caso, conecta con la base de datos local 'comics' (alojada en MySQL). Solo permite recuperar una conexiÃ³n abierta a la vez.
+     * @return ConexiÃ³n con la base de datos, es nula
      * @throws SQLException
      */
     public static Connection IniciaPool() throws SQLException {
@@ -67,15 +67,15 @@ public class Pool {
             //System.out.println("Conectado");
             
         } catch (Exception e) {
-           JOptionPane.showMessageDialog(null, "Error en la conexión a la base de datos (Pool)");
+           JOptionPane.showMessageDialog(null, "Error en la conexiÃ³n a la base de datos (Pool)");
            //e.printStackTrace();
         }
         return null;
      }
 
     /**
-     * Devuelve una conexión con la base de datos para realizar operaciones, sin importar si se conectó con el fichero o de manera predefinida
-     * @return Conexión con la base de datos correspondiente
+     * Devuelve una conexiï¿½n con la base de datos para realizar operaciones, sin importar si se conectÃ³ con el fichero o de manera predefinida
+     * @return ConexiÃ³n con la base de datos correspondiente
      * @throws SQLException
      */
     public static Connection getConexion() throws SQLException {
@@ -88,7 +88,7 @@ public class Pool {
     }
     
     /**
-     * Cierra la última conexión con la base de datos
+     * Cierra la Ãºltima conexiÃ³n con la base de datos
      */
     public static void Cerrar(){
         try {

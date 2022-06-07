@@ -26,7 +26,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
- * Interfaz gráfica del servidor. Muestra su estado, el puerto al que se conecta y permite conectarlo o desconectarlo. Lo primero que hace es conectar con la base de datos.
+ * Interfaz grÃ¡fica del servidor. Muestra su estado, el puerto al que se conecta y permite conectarlo o desconectarlo. Lo primero que hace es conectar con la base de datos.
  * @author admin
  *
  */
@@ -141,7 +141,7 @@ public class Servidor extends JFrame {
         } else {
             if (skServidor != null) {
                 if (!skServidor.isClosed()) {
-                    JOptionPane.showMessageDialog(rootPane, "El servidor ya está iniciado", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(rootPane, "El servidor ya estï¿½ iniciado", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
                     lblEstadoPuerto.setText("ENCENDIDO");
                     lblEstadoPuerto.setForeground(Color.GREEN);
@@ -179,7 +179,7 @@ public class Servidor extends JFrame {
         if (skServidor == null) {
             JOptionPane.showMessageDialog(rootPane, "El servidor no se ha iniciado", "Error", JOptionPane.ERROR_MESSAGE);
         } else if (skServidor.isClosed()) {
-            JOptionPane.showMessageDialog(rootPane, "El servidor ya está cerrado", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(rootPane, "El servidor ya estï¿½ cerrado", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             try {
                 

@@ -13,15 +13,15 @@ import javax.imageio.ImageIO;
 import Modelo.Numero;
 
 /**
- * Clase encargada de realizar operaciones con los números y consultar datos necesarios para ello.
+ * Clase encargada de realizar operaciones con los nÃºmeros y consultar datos necesarios para ello.
  * @author admin
  *
  */
 public class gestionNumeros {
 
 	/**
-	 * Inserta el número enviado en la base de datos, estableciendo como identificador el número siguiente al último identificador de cómic en la base de datos.
-	 * @param numero Número a insertar
+	 * Inserta el nÃºmero enviado en la base de datos, estableciendo como identificador el nÃºmero siguiente al Ãºltimo identificador de cÃ³mic en la base de datos.
+	 * @param numero NÃºmero a insertar
 	 */
 	public static void insertarNumero(Numero numero) {
 		String insercion = "INSERT INTO numeros (titulo,fecha_adquisicion,tapa,estado,resenha,img,id_coleccion) VALUES (?,?,?,?,?,?,?);", increment = "ALTER TABLE comics.numeros AUTO_INCREMENT = ?;";
@@ -93,8 +93,8 @@ public class gestionNumeros {
 	}
 
 	/**
-	 * Modifica el número enviado en la base de datos
-	 * @param numero Número a modificar
+	 * Modifica el nÃºmero enviado en la base de datos
+	 * @param numero NÃºmero a modificar
 	 */
 	public static void modificarNumero(Numero numero) {
 		String modificacion = "UPDATE numeros SET titulo = ?, fecha_adquisicion = ?, tapa = ?, estado = ?,resenha = ?,img = ?,id_coleccion = ? WHERE id = ?;";
@@ -142,8 +142,8 @@ public class gestionNumeros {
 	}
 
 	/**
-	 * Borra el número enviado de la base de datos
-	 * @param numero Número a borrar
+	 * Borra el nÃºmero enviado de la base de datos
+	 * @param numero NÃºmero a borrar
 	 */
 	public static void borrarNumero(Numero numero) {
 		String borrado = "DELETE FROM numeros WHERE id = ?;";
@@ -174,8 +174,8 @@ public class gestionNumeros {
 	}
 
 	/**
-	 * Devuelve el número total de cómics disponibles en la base de datos
-	 * @return Total de cómics
+	 * Devuelve el nÃºmero total de cÃ³mics disponibles en la base de datos
+	 * @return Total de cÃ³mics
 	 */
 	public static int getNumComics() {
 		int numComics = 0;
@@ -203,9 +203,9 @@ public class gestionNumeros {
 	}
 	
 	/**
-	 * Obtiene el último identificador de cómic disponible en la base de datos
-	 * @param con Conexión con la base de datos actual
-	 * @return Último ID de cómic
+	 * Obtiene el Ãºltimo identificador de cÃ³mic disponible en la base de datos
+	 * @param con ConexiÃ³n con la base de datos actual
+	 * @return Ãºltimo ID de cÃ³mic
 	 */
 	private static int getUltimoId(Connection con) {
 		int id = 0;

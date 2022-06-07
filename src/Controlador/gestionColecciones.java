@@ -16,8 +16,8 @@ import Modelo.Numero;
 public class gestionColecciones {
 
 	/**
-	 * Inserta la colecci髇 enviada en la base de datos, estableciendo como identificador el n鷐ero siguiente al 鷏timo identificador de colecci髇 en la base de datos.
-	 * @param coleccion Colecci髇 a insertar
+	 * Inserta la colecci贸n enviada en la base de datos, estableciendo como identificador el n煤mero siguiente al 煤ltimo identificador de colecci贸n en la base de datos.
+	 * @param coleccion Colecci贸n a insertar
 	 */
 	public static void insertarColeccion(Coleccion coleccion) {
 		String insercion = "INSERT INTO colecciones (nombre,img) VALUES (?,?);", increment = "ALTER TABLE comics.colecciones AUTO_INCREMENT = ?;";
@@ -84,9 +84,9 @@ public class gestionColecciones {
 	}
 
 	/**
-	 * Obtiene el 鷏timo identificador de colecci髇 disponible en la base de datos
-	 * @param con Conexi髇 con la base de datos actual
-	 * @return 趌timo ID de colecci髇
+	 * Obtiene el 煤ltimo identificador de colecci贸n disponible en la base de datos
+	 * @param con Conexi贸n con la base de datos actual
+	 * @return 脷ltimo ID de colecci贸n
 	 */
 	private static int getUltimoId(Connection con) {
 		int id = 0;
@@ -112,8 +112,8 @@ public class gestionColecciones {
 	}
 
 	/**
-	 * Modifica la colecci髇 enviada en la base de datos
-	 * @param coleccion Colecci髇 a modificar
+	 * Modifica la colecci贸n enviada en la base de datos
+	 * @param coleccion Colecci贸n a modificar
 	 */
 	public static void modificarColeccion(Coleccion coleccion) {
 		String modificacion = "UPDATE colecciones SET nombre = ?, img = ? WHERE id = ?;";
@@ -156,8 +156,8 @@ public class gestionColecciones {
 	}
 
 	/**
-	 * Borra la colecci髇 enviada de la base de datos
-	 * @param coleccion Colecci髇 a borrar
+	 * Borra la colecci贸n enviada de la base de datos
+	 * @param coleccion Colecci贸n a borrar
 	 */
 	public static void borrarColeccion(Coleccion coleccion) {
 		String borrado = "DELETE FROM colecciones WHERE id = ?;";
@@ -186,9 +186,9 @@ public class gestionColecciones {
 	}
 
 	/**
-	 * Borra todos los n鷐eros de una colecci髇 primero y luego la colecci髇 si no hubo errores. En caso contrario, deshace todos los borrados.
-	 * @param coleccion Colecci髇 a borrar
-	 * @param comicsRelacionados N鷐eros de la colecci髇 a borrar
+	 * Borra todos los n煤meros de una colecci贸n primero y luego la colecci贸n si no hubo errores. En caso contrario, deshace todos los borrados.
+	 * @param coleccion Colecci贸n a borrar
+	 * @param comicsRelacionados N煤meros de la colecci贸n a borrar
 	 */
 	public static void borrarColeccionConNumeros(Coleccion coleccion, ArrayList<Numero> comicsRelacionados) {
 		String borrarCol = "DELETE FROM colecciones WHERE id = ?;", borrarNum = "DELETE FROM numeros WHERE id = ?;";
