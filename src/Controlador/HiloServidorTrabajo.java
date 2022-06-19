@@ -288,6 +288,22 @@ public class HiloServidorTrabajo extends Thread {
                     
                     	objeto_salida.writeObject(numComics);
                     	break;
+                    case "cargarComicPorID": int id = (int) objeto_entrada.readObject();
+	    				numAux = gestionConsultas.existeIDNumero(id);
+	    				
+	    				numeros = new ArrayList<Numero>();
+	    				numeros.add(numAux);
+	    	            
+	    				objeto_salida.writeObject(numeros);
+                    	break;
+                    case "cargarColPorID": id = (int) objeto_entrada.readObject();
+	    				colAux = gestionConsultas.existeIDColeccion(id);
+	    				
+	    				colecciones = new ArrayList<Coleccion>();
+	    				colecciones.add(colAux);
+	    	            
+	    				objeto_salida.writeObject(colecciones);
+	                	break;
                     default:
                         break;
                 }
